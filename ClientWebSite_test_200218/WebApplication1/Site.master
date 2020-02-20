@@ -10,9 +10,9 @@
     <title><%: Page.Title %> - 내 ASP.NET 응용 프로그램</title>
 
     <asp:PlaceHolder runat="server">
-        
+        <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
-    <%--<webopt:bundlereference runat="server" path="~/Content/css" />--%>
+    <webopt:bundlereference runat="server" path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
 </head>
