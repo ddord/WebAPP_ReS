@@ -11,6 +11,7 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
         <%: System.Web.Optimization.Scripts.Render("~/bundles/modernizr") %>
     </asp:ContentPlaceHolder>
+
     <webopt:bundlereference runat="server" path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css" />
@@ -58,7 +59,7 @@
             </div>
         </div>
         <div class="container body-content">
-            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">                
             </asp:ContentPlaceHolder>
             <hr />
             <footer>
