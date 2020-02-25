@@ -39,7 +39,7 @@
                     </asp:PlaceHolder>
                     <p>
                         <asp:HyperLink runat="server" ID="RegisterHyperLink" ViewStateMode="Disabled">등록</asp:HyperLink>
-                        로컬 계정이 없는 경우.
+                         계정이 없는 경우.
                     </p>
                 </div>
             </section>

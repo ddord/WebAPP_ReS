@@ -121,6 +121,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Main.aspx" />
+    <Content Include="Page_Basic\Login.aspx" />
     <Content Include="Page_Basic\LoginMain.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -181,6 +182,13 @@
     </Compile>
     <Compile Include="MainPage.Master.designer.cs">
       <DependentUpon>MainPage.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Page_Basic\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Page_Basic\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Page_Basic\LoginMain.aspx.cs">
       <DependentUpon>LoginMain.aspx</DependentUpon>
