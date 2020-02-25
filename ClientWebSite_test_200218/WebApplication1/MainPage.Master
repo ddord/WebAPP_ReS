@@ -1,23 +1,25 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MainSite.master.cs" Inherits="WebApplication1.MainSite" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MainPage.master.cs" Inherits="WebApplication1.MainPage" %>
 
 <!DOCTYPE html>
 
-<html lang="en">
+<html>
 <head runat="server">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%: Page.Title %> - 내 ASP.NET 응용 프로그램</title>
-    <asp:ContentPlaceHolder ID="head" runat="server">
+
+    <asp:PlaceHolder runat="server">
         <%: System.Web.Optimization.Scripts.Render("~/bundles/modernizr") %>
-    </asp:ContentPlaceHolder>
+    </asp:PlaceHolder>
 
     <webopt:bundlereference runat="server" path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css" />
+
 </head>
-<body>
-    <form runat="server">
+<body>    
+    <form id="form1" runat="server">
         <asp:ScriptManager runat="server">
             <Scripts>
                 <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
@@ -46,26 +48,40 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" runat="server" href="~/">Res Service</a>
+                    <a class="navbar-brand" runat="server" href="~/">Resu Service</a>
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li><a runat="server" href="~/">홈</a></li>
-                        <li><a runat="server" >정보</a></li>
-                        <li><a runat="server" >블로그</a></li>
+                        <li><a runat="server" href="~/">정보</a></li>
+                        <li><a runat="server" href="~/">블로그</a></li>
                     </ul>
+                    <asp:LoginView runat="server" ViewStateMode="Disabled">
+                        <AnonymousTemplate>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a runat="server" href="~/">등록</a></li>
+                                <li><a runat="server" href="~/">로그인</a></li>
+                            </ul>
+                        </AnonymousTemplate>
+                        <LoggedInTemplate>
+                            <ul class="nav navbar-nav navbar-right">                               
+                                <li></li>
+                                <li>
+                                    
+                                </li>
+                            </ul>
+                        </LoggedInTemplate>
+                    </asp:LoginView>
                 </div>
             </div>
         </div>
         <div class="container body-content">
-            <asp:ContentPlaceHolder ID="MainContent" runat="server">                
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
             <hr />
             <footer>
                 <p>&copy; <%: DateTime.Now.Year %> - 내 ASP.NET 응용 프로그램</p>
             </footer>
         </div>
-
     </form>
 </body>
 </html>
