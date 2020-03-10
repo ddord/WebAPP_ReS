@@ -4,11 +4,15 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>계정 로그인</title>
 </head>
 <body>
     <form id="loginForm1" runat="server">
-        <div>
+        <div class="row">
+        </div>
+        <div class="row">
+        </div>
+        <div class="row">
         </div>
     </form>
 </body>

@@ -2,6 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <h2><%: Title %>.</h2>
     <div class="row">
+        <div class =""></div>
         <div class="col-md-8">
             <section id="loginForm">
                 <div class="form-horizontal">
@@ -38,8 +39,7 @@
                         </div>
                     </asp:PlaceHolder>
                     <p>
-                        <asp:HyperLink runat="server" ID="RegisterHyperLink" ViewStateMode="Disabled">등록</asp:HyperLink>
-                         계정이 없는 경우.
+                        <asp:HyperLink runat="server" ID="RegisterHyperLink" ViewStateMode="Disabled">계정 만들기</asp:HyperLink>
                     </p>
                 </div>
             </section>
