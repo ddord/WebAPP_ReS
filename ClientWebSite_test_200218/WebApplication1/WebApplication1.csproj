@@ -121,7 +121,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Main.aspx" />
-    <Content Include="Page_Basic\normalSignUp.aspx" />
     <Content Include="Page_Basic\LoginMain.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -132,9 +131,11 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="MainPage.Master" />
+    <Content Include="Page_Basic\NomalSignUp.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Bundle.config" />
+    <Content Include="LogoOne.Master" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -169,6 +170,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="LogoOne.Master.cs">
+      <DependentUpon>LogoOne.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LogoOne.Master.designer.cs">
+      <DependentUpon>LogoOne.Master</DependentUpon>
+    </Compile>
     <Compile Include="Main.aspx.cs">
       <DependentUpon>Main.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -183,19 +191,19 @@
     <Compile Include="MainPage.Master.designer.cs">
       <DependentUpon>MainPage.Master</DependentUpon>
     </Compile>
-    <Compile Include="Page_Basic\normalRegiste.aspx.cs">
-      <DependentUpon>normalSignUp.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Page_Basic\normalRegiste.aspx.designer.cs">
-      <DependentUpon>normalSignUp.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Page_Basic\LoginMain.aspx.cs">
       <DependentUpon>LoginMain.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Page_Basic\LoginMain.aspx.designer.cs">
       <DependentUpon>LoginMain.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Page_Basic\NomalSignUp.aspx.cs">
+      <DependentUpon>NomalSignUp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Page_Basic\NomalSignUp.aspx.designer.cs">
+      <DependentUpon>NomalSignUp.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -10,34 +10,16 @@
 namespace WebApplication1.Page_Basic {
     
     
-    public partial class LoginMain {
+    public partial class NomalSignUp {
         
         /// <summary>
-        /// LoginStatus control.
+        /// SignUpForm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder LoginStatus;
-        
-        /// <summary>
-        /// StatusText control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal StatusText;
-        
-        /// <summary>
-        /// LoginForm control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder LoginForm;
+        protected global::System.Web.UI.WebControls.PlaceHolder SignUpForm;
         
         /// <summary>
         /// txbUserID control.
@@ -47,6 +29,24 @@ namespace WebApplication1.Page_Basic {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txbUserID;
+        
+        /// <summary>
+        /// FieldValiUserID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator FieldValiUserID;
+        
+        /// <summary>
+        /// ExpressionValidatorUserID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator ExpressionValidatorUserID;
         
         /// <summary>
         /// txbPassword control.
@@ -83,14 +83,5 @@ namespace WebApplication1.Page_Basic {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox3;
-        
-        /// <summary>
-        /// RegisterHyperLink control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink RegisterHyperLink;
     }
 }

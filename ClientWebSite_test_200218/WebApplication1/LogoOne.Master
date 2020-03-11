@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MainPage.master.cs" Inherits="WebApplication1.MainPage" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="LogoOne.master.cs" Inherits="WebApplication1.LogoOne" %>
 
 <!DOCTYPE html>
 
@@ -15,8 +15,9 @@
 
     <webopt:bundlereference runat="server" path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
 </head>
-<body>    
+<body>
     <form id="form1" runat="server">
         <asp:ScriptManager runat="server">
             <Scripts>
@@ -48,28 +49,6 @@
                     </button>
                     <a class="navbar-brand" runat="server" href="~/">Resu Service</a>
                 </div>                
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a runat="server" href="~/">정보</a></li>
-                        <li><a runat="server" href="~/">블로그</a></li>
-                    </ul>   
-                    <asp:LoginView runat="server" ViewStateMode="Disabled">
-                        <AnonymousTemplate>
-                            <ul class="nav navbar-nav navbar-right">
-                                <li><a runat="server" href="~/Page_Basic/LoginMain.aspx">로그인</a></li>
-                            </ul>
-                        </AnonymousTemplate>
-                        <LoggedInTemplate>
-                            <ul class="nav navbar-nav navbar-right">                               
-                                <li><a runat="server" >환영합니다.</a></li>
-                                <li>
-                                    <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="로그아웃" LogoutPageUrl="~/" OnLoggingOut="SignOut" />
-                                </li>
-                            </ul>
-                        </LoggedInTemplate>
-                    </asp:LoginView>
-                </div>
-                
             </div>
         </div>
         <div class="container body-content">
