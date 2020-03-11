@@ -66,6 +66,7 @@ namespace WebApplication1.Page_Basic
                         lbl_error.Visible = true;
                         lbl_error.Text = "아이디 또는 비밀번호를 입력해주시기 바랍니다.";
                     }
+                    sqlConn.Close();
                 }
             }
         }
