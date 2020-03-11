@@ -4,10 +4,9 @@
     <hr />
     <div class="row">
         <div class ="col-xs-4"></div>
-        <div class="col-xs-4">
+        <div class = "col-xs-4">
             <section id="loginForm">
-                <div class="form-horizontal">
-                    
+                <div class="form-horizontal">                    
                     <asp:PlaceHolder runat="server" ID="LoginStatus" Visible="false">
                         <p class="text-danger">
                            <asp:Literal runat="server" ID="StatusText" />
@@ -21,7 +20,7 @@
                         </div>
                         <div style="margin-bottom: 10px" class="form-group">
                             <div>
-                                패스워드
+                                비밀번호
                                 <asp:TextBox runat="server" ID="txbPassword" TextMode="Password" CssClass="form-control" Text="" />
                                 <p class="err_txt" ID="login-error-message">
                                     <asp:Label ID="lbl_error" runat="server" Text="" Visible="false"></asp:Label></p>
@@ -35,7 +34,7 @@
                         </div>
                     </asp:PlaceHolder>
                     <p>
-                        <asp:HyperLink runat="server" ID="RegisterHyperLink" ViewStateMode="Disabled">계정 만들기</asp:HyperLink>
+                        <asp:HyperLink runat="server" ID="RegisterHyperLink" ViewStateMode="Disabled" NavigateUrl="~/Page_Basic/normalSignUp.aspx">계정 만들기</asp:HyperLink>
                     </p>
                 </div>
             </section>
