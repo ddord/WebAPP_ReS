@@ -1647,6 +1647,8 @@ pre code {
 }
 .col-xs-4 {
   width: 33.33333333%;
+    top: -5px;
+    left: 0px;
 }
 .col-xs-3 {
   width: 25%;
@@ -6754,4 +6756,16 @@ button.close {
     display: none !important;
   }
 }
-/*# sourceMappingURL=bootstrap.css.map */
+.err_txt {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: #db3838;
+    font-size: 13px;
+    letter-spacing: -.02em;
+}
+
+@media (min-width: 450px) {
+    .col-neww-md-1{
+        
+    }
+    /*# sourceMappingURL=bootstrap.css.map */

@@ -40,25 +40,7 @@
             </Scripts>
         </asp:ScriptManager>
 
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div style="height:20px">
-                <asp:LoginView runat="server" ViewStateMode="Disabled">
-                    <AnonymousTemplate>
-                        <ul class="nav navbar-nav navbar-right">
-                            <li><a runat="server" href="~/">등록</a></li>
-                            <li><a runat="server" href="~/">로그인</a></li>
-                        </ul>
-                    </AnonymousTemplate>
-                    <LoggedInTemplate>
-                        <ul class="nav navbar-nav navbar-right">                               
-                            <li></li>
-                            <li>
-                                    
-                            </li>
-                        </ul>
-                    </LoggedInTemplate>
-                </asp:LoginView>
-            </div>
+        <div class="navbar navbar-inverse navbar-fixed-top">                
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -72,9 +54,24 @@
                     <ul class="nav navbar-nav">
                         <li><a runat="server" href="~/">정보</a></li>
                         <li><a runat="server" href="~/">블로그</a></li>
-                    </ul>
-                    
+                    </ul>   
+                    <asp:LoginView runat="server" ViewStateMode="Disabled">
+                        <AnonymousTemplate>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a runat="server" href="~/Page_Basic/LoginMain.aspx">로그인</a></li>
+                            </ul>
+                        </AnonymousTemplate>
+                        <LoggedInTemplate>
+                            <ul class="nav navbar-nav navbar-right">                               
+                                <li><a runat="server" >환영합니다,!!</a></li>
+                                <li>
+                                    <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="로그아웃" LogoutPageUrl="~/" />
+                                </li>
+                            </ul>
+                        </LoggedInTemplate>
+                    </asp:LoginView>
                 </div>
+                
             </div>
         </div>
         <div class="container body-content">

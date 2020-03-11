@@ -1,12 +1,13 @@
 ﻿<%@ Page Title="로그인" Language="C#" MasterPageFile="~/MainPage.Master" AutoEventWireup="true" CodeBehind="LoginMain.aspx.cs" Inherits="WebApplication1.Page_Basic.LoginMain" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <h2><%: Title %>.</h2>
+    <hr />
     <div class="row">
-        <div class =""></div>
-        <div class="col-md-8">
+        <div class ="col-xs-4"></div>
+        <div class="col-xs-4">
             <section id="loginForm">
                 <div class="form-horizontal">
-                    <hr />
+                    
                     <asp:PlaceHolder runat="server" ID="LoginStatus" Visible="false">
                         <p class="text-danger">
                            <asp:Literal runat="server" ID="StatusText" />
@@ -15,26 +16,21 @@
                     <asp:PlaceHolder runat="server" ID="LoginForm" Visible="false">
                         <div style="margin-bottom: 10px" class="form-group">
                             <div>
-                                <asp:TextBox runat="server" ID="txbUserID" CssClass="form-control" Text="아이디" />
+                                아이디 <asp:TextBox runat="server" ID="txbUserID" CssClass="form-control" Text="" />
                             </div>
                         </div>
                         <div style="margin-bottom: 10px" class="form-group">
                             <div>
-                                <asp:TextBox runat="server" ID="txbPassword" TextMode="Password" CssClass="form-control" Text="패스워드"/>
-                                <asp:RequiredFieldValidator runat="server" CssClass="text-danger" ErrorMessage="error" />
+                                패스워드
+                                <asp:TextBox runat="server" ID="txbPassword" TextMode="Password" CssClass="form-control" Text="" />
+                                <p class="err_txt" ID="login-error-message">
+                                    <asp:Label ID="lbl_error" runat="server" Text="" Visible="false"></asp:Label></p>
+                                <%--<asp:RequiredFieldValidator runat="server" CssClass="text-danger" ErrorMessage="error" />--%>
                             </div>
                         </div>
                         <div style="margin-bottom: 10px" class="form-group">
                             <div class="col-md-offset-2 col-md-10">
-                                <%-- <asp:Button runat="server" OnClick="SignIn" Text="Log in" CssClass="btn btn-default"/>--%>
-                            </div>
-                        </div>
-                    </asp:PlaceHolder>
-
-                    <asp:PlaceHolder runat="server" ID="LogoutButton" Visible="false">
-                        <div style="margin-bottom: 10px" class="form-group">
-                            <div class="col-md-offset-2 col-md-10">
-                                <%-- <asp:Button runat="server" OnClick="SignOut" Text="Log out" CssClass="btn btn-default"/>--%>
+                                <asp:Button runat="server" OnClick="SignIn" Text="로그인" CssClass="btn btn-default"/>
                             </div>
                         </div>
                     </asp:PlaceHolder>
@@ -44,6 +40,7 @@
                 </div>
             </section>
         </div>
+        <div class ="col-xs-4"></div>
     </div>
 </asp:Content>
 
