@@ -15,12 +15,20 @@
                     data: new_id,//test.asp에 id 값을 보낸다                    
                     cache: false,
                     success: function (data) {
-                        $("#loadtext").html(data.d); //해당 내용을 보여준다
+                        if (data.d == "아이디가 존재합니다.") {
+                                $("input[id$='txbUserID']").val('');
+                                $("#loadtext").html(data.d); //해당 내용을 보여준다
+                            }
+                            else {
+                                $("#loadtext").html(data.d); //해당 내용을 보여준다
+                            }
+                        
                     },
                     error: function (request,status,error) {
                         alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
                     }
-                    });
+                });
+                return false;
                 });
         });
         </script>
@@ -48,44 +56,43 @@
                     var new_eMail = JSON.stringify({ eMail: eMail });
                     var id = [$("input[id$='txbUserID']").val().toString(), $("input[id$='txbUserName']").val(), $("input[id$='txbPwd']").val(),
                         $("input[id$='txbPwdRe']").val(), $("input[id$='txbAddress']").val(), $("input[id$='txbEmail']").val()];--%>
-                    var user = {}
-                    user.id = $("input[id$='txbUserID']").val();
-                    user.name = $("input[id$='txbUserName']").val();
-                    user.pwd = $("input[id$='txbPwd']").val();
-                    user.pwdRe = $("input[id$='txbPwdRe']").val();
-                    user.add = $("input[id$='txbAddress']").val();
-                    user.eMail = $("input[id$='txbEmail']").val();
+                    
+                    var user = {};
+                    user.ID = $("input[id$='txbUserID']").val().toString();
+                    user.Name = $("input[id$='txbUserName']").val().toString();
+                    user.Pwd = $("input[id$='txbPwd']").val().toString();
+                    user.PwdRe = $("input[id$='txbPwdRe']").val().toString();
+                    user.Addr = $("input[id$='txbAddress']").val().toString();
+                    user.Email = $("input[id$='txbEmail']").val().toString();
+                    var userinfo = "{userInfo:" + JSON.stringify(user) + "}";
 
                     $.ajax({
                         type: "POST",
-                        contentType: "application/json; charset=utf-8",
-                        url: "NomalSignUp.aspx/SignUp_click", //이페이지에서 중복체크를 한다
+                        url: "NomalSignUp.aspx/SignUp_click", //이페이지에서 중복체크를 한다.
+                        data: userinfo,
+                        contentType: "application/json;",
                         dataType: "json",
-                        data: "{user:" + JSON.stringify(user) + "}",
-                            <%--new_name,
-                            new_pwd,
-                            new_pwdRe,
-                            new_addr,
-                            new_eMail
-                        },--%>//test.asp에 id 값을 보낸다
                         cache: false,
                         success: function (data) {
-                            if (data.d == "다시 확인 해주시기 바랍니다.") {
-                                alert("다시 확인 해주시기 바랍니다.");
+                            if (data.d[6] == "다시 확인 해주시기 바랍니다.") {
+                                $("#loadtext").html(data.d[0]); //해당 내용을 보여준다
+                                $("#loadname").html(data.d[1]); //해당 내용을 보여준다
+                                $("#loadpwd").html(data.d[2]); //해당 내용을 보여준다
+                                $("#loadpwdRe").html(data.d[3]); //해당 내용을 보여준다
+                                $("#loadaddr").html(data.d[4]); //해당 내용을 보여준다
+                                $("#loadEmail").html(data.d[5]); //해당 내용을 보여준다
+                                alert(data.d[6]);
                             }
                             else {
-                                 $("#loadtext").html(data.d); //해당 내용을 보여준다
-                                $("#loadname").html(data.d); //해당 내용을 보여준다
-                                $("#loadpwd").html(data.d); //해당 내용을 보여준다
-                                $("#loadpwdRe").html(data.d); //해당 내용을 보여준다
-                                $("#loadaddr").html(data.d); //해당 내용을 보여준다
-                                $("#loadEmail").html(data.d); //해당 내용을 보여준다
+                                alert(data.d[6]);
+                                location.href = "/Page_Basic/LoginMain.aspx";
                             }
                         },
                         error: function (request,status,error) {
                             alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
                         }
-                        });
+                    });
+                    return false;
                     });
                 });
         </script>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -26,8 +27,8 @@ namespace WebApplication1.Page_Basic
             }
         }
 
-        private int name;
-        public int Name
+        private string name;
+        public string Name
         {
             get
             {
@@ -39,8 +40,8 @@ namespace WebApplication1.Page_Basic
             }
         }
 
-        private int pwd;
-        public int Pwd
+        private string pwd;
+        public string Pwd
         {
             get
             {
@@ -52,8 +53,8 @@ namespace WebApplication1.Page_Basic
             }
         }
 
-        private int pwdRe;
-        public int PwdRe
+        private string pwdRe;
+        public string PwdRe
         {
             get
             {
@@ -65,8 +66,8 @@ namespace WebApplication1.Page_Basic
             }
         }
 
-        private int addr;
-        public int Addr
+        private string addr;
+        public string Addr
         {
             get
             {
@@ -78,8 +79,8 @@ namespace WebApplication1.Page_Basic
             }
         }
 
-        private int email;
-        public int Email
+        private string email;
+        public string Email
         {
             get
             {
@@ -91,13 +92,15 @@ namespace WebApplication1.Page_Basic
             }
         }
     }
-
+   
     public partial class NomalSignUp : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
+
+        public bool userExist = false;
 
         [WebMethod()]
         public static bool IsPromoValid(string code)
@@ -130,18 +133,19 @@ namespace WebApplication1.Page_Basic
         }
 
         [WebMethod()]
-        public static string[] SignUp_click(List<UserInfo> userInfo)
+        public static string[] SignUp_click(UserInfo userInfo)
         {
             int sum = 0;
+            //string[] return_mun = new string[7];
             string[] return_mun = new string[7];
-            /*
-            for (int i = 0; i < vs.Length; i++)
+
+            for (int i = 0; i < 6; i++)
             {
                 
                 switch (i)
                 {
                     case 0:
-                        if (vs[0] == "")
+                        if (userInfo.ID == "")
                             return_mun[0] = "아이디 필수 입력.";
                         else
                         {
@@ -150,7 +154,7 @@ namespace WebApplication1.Page_Basic
                         }
                         break;
                     case 1:
-                        if (vs[1] == "")
+                        if (userInfo.Name == "")
                             return_mun[1] = "이름 필수 입력.";
                         else
                         {
@@ -159,7 +163,7 @@ namespace WebApplication1.Page_Basic
                         }
                         break;
                     case 2:
-                        if (vs[2] == "")
+                        if (userInfo.Pwd == "")
                             return_mun[2] = "비밀번호 필수 입력.";
                         else
                         {
@@ -168,7 +172,7 @@ namespace WebApplication1.Page_Basic
                         }
                         break;
                     case 3:
-                        if (vs[2] != vs[3])
+                        if (userInfo.Pwd != userInfo.PwdRe)
                             return_mun[3] = "비밀번호를 다시 확인해주세요.";
                         else
                         {
@@ -177,7 +181,7 @@ namespace WebApplication1.Page_Basic
                         }
                         break;
                     case 4:
-                        if (vs[4] == "")
+                        if (userInfo.Addr == "")
                             return_mun[4] = "주소 필수 입력.";
                         else
                         {
@@ -186,7 +190,7 @@ namespace WebApplication1.Page_Basic
                         }
                         break;
                     case 5:
-                        if (vs[5] == "")
+                        if (userInfo.Email == "")
                             return_mun[5] = "이메일 필수 입력.";
                         else
                         {
@@ -206,11 +210,11 @@ namespace WebApplication1.Page_Basic
                     sqlComm = new SqlCommand("pro_userInfo_CRUD", sqlConn);
                     sqlComm.CommandType = CommandType.StoredProcedure;
 
-                    sqlComm.Parameters.Add("@userID", SqlDbType.NVarChar).Value = vs[0];
-                    sqlComm.Parameters.Add("@userName", SqlDbType.NVarChar).Value = vs[1];
-                    sqlComm.Parameters.Add("@userPwd", SqlDbType.NVarChar).Value = vs[2];
-                    sqlComm.Parameters.Add("@userAddress", SqlDbType.NVarChar).Value = vs[4];
-                    sqlComm.Parameters.Add("@userEmail", SqlDbType.NVarChar).Value = vs[5];
+                    sqlComm.Parameters.Add("@userID", SqlDbType.NVarChar).Value = userInfo.ID;
+                    sqlComm.Parameters.Add("@userName", SqlDbType.NVarChar).Value = userInfo.Name;
+                    sqlComm.Parameters.Add("@userPwd", SqlDbType.NVarChar).Value = userInfo.Pwd;
+                    sqlComm.Parameters.Add("@userAddress", SqlDbType.NVarChar).Value = userInfo.Addr;
+                    sqlComm.Parameters.Add("@userEmail", SqlDbType.NVarChar).Value = userInfo.Email;
                     sqlComm.Parameters.Add("@userGrade", SqlDbType.NVarChar).Value = "FF";
                     sqlComm.Parameters.Add("@StatementType", SqlDbType.NVarChar).Value = "Insert";
 
@@ -218,11 +222,10 @@ namespace WebApplication1.Page_Basic
                     sqlComm.ExecuteNonQuery();
 
                     sqlComm = new SqlCommand("SELECT * FROM UserInfor WHERE userID = @userID", sqlConn);
-                    sqlComm.Parameters.AddWithValue("@userID", vs[0]);
+                    sqlComm.Parameters.AddWithValue("@userID", userInfo.ID);
 
                     return_mun[6] = "회원가입 완료.";
                     return return_mun;
-
                 }
             }
             else
@@ -230,8 +233,7 @@ namespace WebApplication1.Page_Basic
                 return_mun[6] = "다시 확인 해주시기 바랍니다.";
                 return return_mun;
             }
-            */
-            return return_mun;
+ 
         }
 
         protected void SignUp_Click(object sender, EventArgs e)
