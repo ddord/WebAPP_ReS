@@ -44,7 +44,6 @@ namespace WebApplication1.Page_Basic
             {
                 using (SqlConnection sqlConn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ToString()))
                 {
-
                     SqlCommand sqlComm = new SqlCommand("SELECT * FROM UserInfor WHERE userID = @userID and userPwd = @userPwd", sqlConn);
                     sqlConn.Open();
                     sqlComm.Parameters.AddWithValue("@userID", userId);
