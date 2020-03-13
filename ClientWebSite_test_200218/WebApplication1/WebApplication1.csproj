@@ -131,11 +131,14 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="MainPage.Master" />
+    <Content Include="Page_Basic\MainBoard.aspx" />
     <Content Include="Page_Basic\NormalSignUp.aspx" />
+    <Content Include="Page_Basic\WebForm1.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Bundle.config" />
     <Content Include="LogoOne.Master" />
+    <Content Include="NestedLeftSide.master" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -191,6 +194,13 @@
     <Compile Include="MainPage.Master.designer.cs">
       <DependentUpon>MainPage.Master</DependentUpon>
     </Compile>
+    <Compile Include="NestedLeftSide.master.cs">
+      <DependentUpon>NestedLeftSide.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NestedLeftSide.master.designer.cs">
+      <DependentUpon>NestedLeftSide.master</DependentUpon>
+    </Compile>
     <Compile Include="Page_Basic\LoginMain.aspx.cs">
       <DependentUpon>LoginMain.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -198,11 +208,25 @@
     <Compile Include="Page_Basic\LoginMain.aspx.designer.cs">
       <DependentUpon>LoginMain.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Page_Basic\MainBoard.aspx.cs">
+      <DependentUpon>MainBoard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Page_Basic\MainBoard.aspx.designer.cs">
+      <DependentUpon>MainBoard.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Page_Basic\NormalSignUp.aspx.cs">
       <DependentUpon>NormalSignUp.aspx</DependentUpon>
     </Compile>
     <Compile Include="Page_Basic\NormalSignUp.aspx.designer.cs">
       <DependentUpon>NormalSignUp.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Page_Basic\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Page_Basic\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
