@@ -131,7 +131,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="MainPage.Master" />
-    <Content Include="Page_Basic\NomalSignUp.aspx" />
+    <Content Include="Page_Basic\NormalSignUp.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Bundle.config" />
@@ -198,12 +198,11 @@
     <Compile Include="Page_Basic\LoginMain.aspx.designer.cs">
       <DependentUpon>LoginMain.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Page_Basic\NomalSignUp.aspx.cs">
-      <DependentUpon>NomalSignUp.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
+    <Compile Include="Page_Basic\NormalSignUp.aspx.cs">
+      <DependentUpon>NormalSignUp.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Page_Basic\NomalSignUp.aspx.designer.cs">
-      <DependentUpon>NomalSignUp.aspx</DependentUpon>
+    <Compile Include="Page_Basic\NormalSignUp.aspx.designer.cs">
+      <DependentUpon>NormalSignUp.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -91,6 +91,19 @@ namespace WebApplication1.Page_Basic
                 email = value;
             }
         }
+
+        private string idcheck;
+        public string IDcheck
+        {
+            get
+            {
+                return idcheck;
+            }
+            set
+            {
+                idcheck = value;
+            }
+        }
     }
    
     public partial class NomalSignUp : System.Web.UI.Page
@@ -115,6 +128,9 @@ namespace WebApplication1.Page_Basic
         {
             using (SqlConnection sqlConn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ToString()))
             {
+                if (id.Trim() == "")
+                    return "아이디를 입력해주세요.";
+
                 SqlCommand sqlComm = new SqlCommand();
                 sqlConn.Open();
                 sqlComm = new SqlCommand("SELECT * FROM UserInfor WHERE userID = @userID", sqlConn);
@@ -147,6 +163,8 @@ namespace WebApplication1.Page_Basic
                     case 0:
                         if (userInfo.ID == "")
                             return_mun[0] = "아이디 필수 입력.";
+                        else if (userInfo.IDcheck == "false")
+                            return_mun[0] = "아이디 중복확인을 해주세요.";
                         else
                         {
                             return_mun[0] = "";

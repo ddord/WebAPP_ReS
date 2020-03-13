@@ -34,7 +34,7 @@
                         </div>
                     </asp:PlaceHolder>
                     <p>
-                        <asp:HyperLink runat="server" ID="RegisterHyperLink" ViewStateMode="Disabled" NavigateUrl="~/Page_Basic/normalSignUp.aspx">계정 만들기</asp:HyperLink>
+                        <asp:HyperLink runat="server" ID="RegisterHyperLink" ViewStateMode="Disabled" NavigateUrl="/Page_Basic/NormalSignUp.aspx">계정 만들기</asp:HyperLink>
                     </p>
                 </div>
             </section>

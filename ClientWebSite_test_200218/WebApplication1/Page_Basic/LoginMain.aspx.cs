@@ -37,7 +37,7 @@ namespace WebApplication1.Page_Basic
             if (userId == "" || userPw == "")
             {
                 lbl_error.Visible = true;
-                lbl_error.Text = "아이디 또는 비밀번호를 입력해주시기 바랍니다.";
+                lbl_error.Text = "아이디 또는 비밀번호를 입력 해주시기 바랍니다.";
                 txbUserID.Focus();
             }
             else
@@ -63,7 +63,7 @@ namespace WebApplication1.Page_Basic
                     else
                     {
                         lbl_error.Visible = true;
-                        lbl_error.Text = "아이디 또는 비밀번호를 입력해주시기 바랍니다.";
+                        lbl_error.Text = "아이디 또는 비밀번호를 확인 해주시기 바랍니다.";
                     }
                     sqlConn.Close();
                 }
