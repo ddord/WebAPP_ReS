@@ -2,61 +2,38 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <script src="/Scripts/jquery-3.3.1.min.js"></script> 
     <%-- <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script> "input[id$='btn_checkID']"   --%>
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $("input[id$='btnCheckID']").click(function () {
-                var id = $("input[id$='txbUserID']").val();
-                var new_id = JSON.stringify({id:id});
-                $.ajax({
-                    type: "POST",
-                    contentType: "application/json",
-                    url: "NomalSignUp.aspx/checkID", //이페이지에서 중복체크를 한다
-                    dataType: "json",
-                    data: new_id,//test.asp에 id 값을 보낸다                    
-                    cache: false,
-                    success: function (data) {
-                        if (data.d == "아이디가 존재합니다.") {
-                                $("input[id$='txbUserID']").val('');
-                                $("#loadtext").html(data.d); //해당 내용을 보여준다
-                            }
-                            else {
-                                $("#loadtext").html(data.d); //해당 내용을 보여준다
-                            }
-                        
-                    },
-                    error: function (request,status,error) {
-                        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-                    }
-                });
-                return false;
-                });
-        });
-        </script>
         <script type="text/javascript">
             $(document).ready(function(){
-                $("input[id$='btnSignup']").click(function () {
-                    <%--
+                $("input[id$='btnCheckID']").click(function () {
                     var id = $("input[id$='txbUserID']").val();
-                    var name = $("input[id$='txbUserName']").val();
-                    var pwd = $("input[id$='txbPwd']").val();
-                    var pwdRe = $("input[id$='txbPwdRe']").val();
-                    var add = $("input[id$='txbAddress']").val();
-                    var eMail = $("input[id$='txbEmail']").val();
-                    var new_id = JSON.stringify({
-                        id: id,
-                        name: name,
-                        pwd: pwd,
-                        pwdRe: pwdRe,
-                        add: add,
-                    eMail: eMail});
-                    var new_name = JSON.stringify({ name: name });
-                    var new_pwd = JSON.stringify({ pwd: pwd });
-                    var new_pwdRe = JSON.stringify({ pwdRe: pwdRe });
-                    var new_addr = JSON.stringify({ add: add });
-                    var new_eMail = JSON.stringify({ eMail: eMail });
-                    var id = [$("input[id$='txbUserID']").val().toString(), $("input[id$='txbUserName']").val(), $("input[id$='txbPwd']").val(),
-                        $("input[id$='txbPwdRe']").val(), $("input[id$='txbAddress']").val(), $("input[id$='txbEmail']").val()];--%>
-                    
+                    var new_id = JSON.stringify({id:id});
+                    $.ajax({
+                        type: "POST",
+                        contentType: "application/json",
+                        url: "NomalSignUp.aspx/checkID", //이페이지에서 중복체크를 한다
+                        dataType: "json",
+                        data: new_id,//test.asp에 id 값을 보낸다                    
+                        cache: false,
+                        success: function (data) {
+                            if (data.d == "아이디가 존재합니다.") {
+                                    $("input[id$='txbUserID']").val('');
+                                    $("#loadtext").html(data.d); //해당 내용을 보여준다
+                                }
+                                else {
+                                    $("#loadtext").html(data.d); //해당 내용을 보여준다
+                                }
+                        
+                        },
+                        error: function (request,status,error) {
+                            alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                        }
+                    });
+                    return false;
+                    });
+            });
+
+            $(document).ready(function(){
+                $("input[id$='btnSignup']").click(function () {                   
                     var user = {};
                     user.ID = $("input[id$='txbUserID']").val().toString();
                     user.Name = $("input[id$='txbUserName']").val().toString();
@@ -96,24 +73,7 @@
                     });
                 });
         </script>
-    <%-- 
-    <script type="text/javascript">
-        function validatePromo(src, args) {
-            var isValid;
-            $.ajax({
-                type: "POST",
-                url: "NomalSignUp.aspx/IsPromoValid",
-                data: "{'code': '" + args + "'}",
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                async: false,
-                success: function (msg) {
-                    isValid = msg.d;
-                }
-            });
-            args.IsValid = isValid;
-        }
-    </script>    --%>
+
     <h2><%: Title %>.</h2>
     <hr />
         <div class="row" id="div11">
