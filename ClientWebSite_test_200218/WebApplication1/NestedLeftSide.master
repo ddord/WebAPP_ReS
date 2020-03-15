@@ -2,10 +2,16 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="row" id="div11">
         <div class ="col-xs-3">
-
+            안녕하세요
+            <br />
+            저는
+            <br />
+            저는
         </div>
         <div class ="col-xs-9">
-            <asp:ContentPlaceHolder ID="MainContentSub" runat="server"/>
+            <asp:ContentPlaceHolder ID="MainContentSub" runat="server">
+            </asp:ContentPlaceHolder>
+                
         </div>
     </div>
     
