@@ -1,14 +1,16 @@
 ﻿<%@ Master Language="C#" MasterPageFile="~/MainPage.Master" AutoEventWireup="true" CodeBehind="NestedLeftSide.master.cs" Inherits="WebApplication1.NestedLeftSide" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="row" id="div11">
-        <div class ="col-xs-3">
-            안녕하세요
-            <br />
-            저는
-            <br />
-            저는
+        <div class ="col-xs-2">
+            <div class="sidenav">
+              <a href="#">About</a>
+              <a href="#">Services</a>
+              <a href="#">Clients</a>
+              <a href="#">Contact</a>
+            </div>
         </div>
-        <div class ="col-xs-9">
+        <div class ="col-xs-10">
             <asp:ContentPlaceHolder ID="MainContentSub" runat="server">
             </asp:ContentPlaceHolder>
                 
