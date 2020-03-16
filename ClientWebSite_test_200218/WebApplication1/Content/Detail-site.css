@@ -1,11 +1,13 @@
 ﻿body {
+    padding-top: 70px;
+    padding-bottom: 20px;
     font-family: "Lato", sans-serif;
 }
 
 .sidenav {
     height: 100%;
     width: 200px;
-    position: fixed;
+    position: relative;
     z-index: 1;
     top: 0;
     left: 0;
