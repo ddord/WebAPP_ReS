@@ -14,7 +14,7 @@
                     type: "POST",
                     contentType: "application/json",
                     url: "NormalSignUp.aspx/checkID", //이페이지에서 중복체크를 한다
-                    dataType: "json",
+                    dataType: "JSON",
                     data: new_id,//test.asp에 id 값을 보낸다                    
                     cache: false,
                     success: function (data) {
@@ -53,7 +53,7 @@
                     url: "NormalSignUp.aspx/SignUp_click", //이페이지에서 중복체크를 한다.
                     data: userinfo,
                     contentType: "application/json;",
-                    dataType: "json",
+                    dataType: "JSON",
                     cache: false,
                     success: function (data) {
                         if (data.d[6] == "다시 확인 해주시기 바랍니다.") {

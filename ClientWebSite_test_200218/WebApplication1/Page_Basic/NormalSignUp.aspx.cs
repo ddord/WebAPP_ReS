@@ -115,7 +115,7 @@ namespace WebApplication1.Page_Basic
 
         public bool userExist = false;
 
-        [WebMethod()]
+        [WebMethod]
         public static bool IsPromoValid(string code)
         {
             string promoCode = "ABCDEFG";
@@ -123,7 +123,7 @@ namespace WebApplication1.Page_Basic
             return result;
         }
 
-        [WebMethod()]
+        [WebMethod]
         public static string checkID(string id)
         {
             using (SqlConnection sqlConn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ToString()))
@@ -148,7 +148,7 @@ namespace WebApplication1.Page_Basic
             }
         }
 
-        [WebMethod()]
+        [WebMethod]
         public static string[] SignUp_click(UserInfo userInfo)
         {
             int sum = 0;

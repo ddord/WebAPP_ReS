@@ -133,6 +133,7 @@
     <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="MainPage.Master" />
     <Content Include="Page_Basic\MainBoard.aspx" />
+    <Content Include="Page_Basic\Method_Basic.asmx" />
     <Content Include="Page_Basic\NormalSignUp.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -214,6 +215,9 @@
     </Compile>
     <Compile Include="Page_Basic\MainBoard.aspx.designer.cs">
       <DependentUpon>MainBoard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Page_Basic\Method_Basic.asmx.cs">
+      <DependentUpon>Method_Basic.asmx</DependentUpon>
     </Compile>
     <Compile Include="Page_Basic\NormalSignUp.aspx.cs">
       <DependentUpon>NormalSignUp.aspx</DependentUpon>
