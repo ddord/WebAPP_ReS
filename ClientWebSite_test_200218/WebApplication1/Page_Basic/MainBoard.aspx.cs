@@ -18,7 +18,7 @@ namespace WebApplication1.Page_Basic
         public string Category { get; set; }
         public string Title { get; set; }
         public string Name { get; set; }                
-        public DateTime WirteDate { get; set; }
+        public string WirteDate { get; set; }
     }
 
     public partial class MainBoard : System.Web.UI.Page
@@ -29,29 +29,33 @@ namespace WebApplication1.Page_Basic
         }
 
         [WebMethod]
-        public void GetEmployees()
+        public void GetMainBoardList()
         {
-            string cs = ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString;
-            List<MainBoardList> employees = new List<MainBoardList>();
-            using (SqlConnection con = new SqlConnection(cs))
+            List<MainBoardList> mainBoardLists = new List<MainBoardList>();
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
             {
-                SqlCommand cmd = new SqlCommand("spGetEmployees", con);
+                SqlCommand cmd = new SqlCommand("GetMainBoardList", con);
                 cmd.CommandType = CommandType.StoredProcedure;
                 con.Open();
-                SqlDataReader rdr = cmd.ExecuteReader();
-                while (rdr.Read())
+                SqlDataReader sqlreader = cmd.ExecuteReader();
+                while (sqlreader.Read())
                 {
-                    MainBoardList employee = new MainBoardList();
-                    employee.Id = Convert.ToInt32(rdr["Id"]);
-                    employee.Category = rdr["FirstName"].ToString();
-                    employee.Title = rdr["LastName"].ToString();
-                    employee.Name = rdr["Gender"].ToString();    
-                    employee.WirteDate = Convert.ToDateTime(rdr["HireDate"]);
-                    employees.Add(employee);
+                    MainBoardList mainBoardList = new MainBoardList();
+                    mainBoardList.Id = Convert.ToInt32(sqlreader["Id"]);
+                    mainBoardList.Category = sqlreader["FirstName"].ToString();
+                    mainBoardList.Title = sqlreader["LastName"].ToString();
+                    mainBoardList.Name = sqlreader["Gender"].ToString();
+                    string getDate = String.Format("yyyy.MM.dd.", sqlreader["HireDate"]);
+                    if (DateTime.Now.ToString("yyyy.MM.dd") == getDate)
+                        mainBoardList.WirteDate = String.Format("HH:mm", sqlreader["HireDate"]);
+                    else
+                        mainBoardList.WirteDate = getDate;
+
+                    mainBoardLists.Add(mainBoardList);
                 }
             }
             JavaScriptSerializer js = new JavaScriptSerializer();
-            Context.Response.Write(js.Serialize(employees));
+            Context.Response.Write(js.Serialize(mainBoardLists));
         }
     }
 }
