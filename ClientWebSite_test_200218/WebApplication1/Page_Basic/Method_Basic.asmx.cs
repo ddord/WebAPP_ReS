@@ -30,7 +30,6 @@ namespace WebApplication1.Page_Basic
     public class Method_Basic : System.Web.Services.WebService
     {
 
-
         [WebMethod]
         public void GetMainBoardList()
         {
@@ -59,6 +58,27 @@ namespace WebApplication1.Page_Basic
             }
             JavaScriptSerializer js = new JavaScriptSerializer();
             Context.Response.Write(js.Serialize(mainBoardLists));
+        }
+
+        [WebMethod]
+        public string bind(string pageNo)
+        {
+            SqlConnection conn = new SqlConnection();
+            SqlCommand cmd = new SqlCommand();
+            DataSet dataSet = new DataSet();
+
+            conn.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+            cmd.Connection = conn;
+
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "sp_GetProductByCustomPaging";
+            cmd.Parameters.AddWithValue("@PageNo", pageNo);
+            cmd.Parameters.AddWithValue("@pageSize", 10);
+
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
+            sqlDataAdapter.SelectCommand = cmd;
+            sqlDataAdapter.Fill(dataSet);
+            return dataSet.GetXml();
         }
     }
 }
