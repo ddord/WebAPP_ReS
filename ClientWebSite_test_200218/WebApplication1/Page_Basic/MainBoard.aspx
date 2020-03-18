@@ -163,8 +163,27 @@
     </script>
 
     <div class="panel-body">
-        <asp:Repeater ID="MainBoardList" runat="server">
-
+        <asp:Repeater ID="RepeaterMainBoardList" runat="server">
+            <HeaderTemplate>
+                 <tr>
+                    <th scope="col" class="col-md-1">분류
+                    </th>
+                    <th scope="col" class="col-md-5">제    목
+                    </th>
+                    <th scope="col" class="col-md-2">작성자
+                    </th>
+                    <th scope="col" class="col-md-2">날짜
+                    </th>
+                </tr>
+            </HeaderTemplate>
+            <ItemTemplate>
+                <tr>
+                    <td class="col-md-1"><%#Eval("category")%></td>
+                    <td class="col-md-5"><%#Eval("mainBoardTitle")%></td>
+                    <td class="col-md-2"><%#Eval("id_Name")%></td>
+                    <td class="col-md-2"><%#Eval("writeDate")%></td>
+                </tr>
+            </ItemTemplate>
 
         </asp:Repeater>
         <div id="pagingDiv"></div>
