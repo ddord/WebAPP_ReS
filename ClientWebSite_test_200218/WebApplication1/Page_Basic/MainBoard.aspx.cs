@@ -18,23 +18,25 @@ namespace WebApplication1.Page_Basic
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            /*
             if (!IsPostBack)
             {
-                //BindDummyRow();
+                BindDummyRow();
             }
+            */
         }
-
+        /*
         private void BindDummyRow()
         {
             DataTable dataTable = new DataTable();
-            dataTable.Columns.Add("RowNum");
-            dataTable.Columns.Add("ProductName");
-            dataTable.Columns.Add("QuantityPerUnit");
-            dataTable.Columns.Add("UnitPrice");
-            dataTable.Columns.Add("UnitsInStock");
+            dataTable.Columns.Add("Category");
+            dataTable.Columns.Add("Title");
+            dataTable.Columns.Add("Name");
+            dataTable.Columns.Add("WirteDate");
             dataTable.Rows.Add();
             grvMainBoard.DataSource = dataTable;
             grvMainBoard.DataBind();
         }
+        */
     }
 }

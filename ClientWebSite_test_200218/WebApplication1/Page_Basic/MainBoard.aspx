@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="메인 게시판" Language="C#" MasterPageFile="~/NestedLeftSide.Master" AutoEventWireup="true" CodeBehind="MainBoard.aspx.cs" Inherits="WebApplication1.Page_Basic.MainBoard" %>
-<%--
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContentSub" runat="server">
     <link rel="stylesheet" type="text/css"
         href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css" />
@@ -49,18 +49,18 @@
         </table>
     </div>
 </asp:Content>
- --%>
+<%--
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentSub" runat="server">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {   
 
             $(document).ajaxStart(function () {
-                $("#loadingImg").show();
+                $("[id$=loadingImg]").show();
             });
   
             $(document).ajaxStop(function () {
-                $("#loadingImg").hide();
+                $("[id$=loadingImg]").hide();
             });
         
             $("#submitButton").click(function (e) {
@@ -172,6 +172,7 @@
         </asp:GridView>
         <div id="pagingDiv"></div>
         <img id="loadingImg" src="loading.gif" />
-    <asp:Button ID="submitButton" Text="Bind GridView" runat="server" />
+        <asp:Button ID="submitButton" Text="Bind GridView" runat="server" />
     </div>
 </asp:Content>
+     --%>

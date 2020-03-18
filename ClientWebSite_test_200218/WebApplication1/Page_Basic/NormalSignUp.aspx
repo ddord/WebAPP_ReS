@@ -1,9 +1,10 @@
 ﻿<%@ Page Title="회원가입" Language="C#" MasterPageFile="~/LogoOne.Master" AutoEventWireup="true" CodeBehind="NormalSignUp.aspx.cs" Inherits="WebApplication1.Page_Basic.NomalSignUp" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <script src="/Scripts/jquery-3.3.1.min.js"></script> 
+
+
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">    
     <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-    <%-- <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script> "input[id$='btn_checkID']"   --%>
-   
+    <script src="/Scripts/jquery-3.3.1.min.js"></script>
+
     <script type="text/javascript">
         var checkId = false;
         $(document).ready(function(){
