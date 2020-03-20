@@ -75,6 +75,8 @@
         <div class="container body-content">
                 <asp:ContentPlaceHolder ID="MainContent" runat="server">
                 </asp:ContentPlaceHolder>
+        </div>
+        <div>
             <hr />
             <footer>
                 <p>&copy; <%: DateTime.Now.Year %> - 내 ASP.NET 응용 프로그램</p>

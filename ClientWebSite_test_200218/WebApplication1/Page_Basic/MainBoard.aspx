@@ -165,7 +165,8 @@
     <div class="panel-body">
         <asp:Repeater ID="RepeaterMainBoardList" runat="server">
             <HeaderTemplate>
-                 <tr>
+                <table  border="1">
+                <tr>
                     <th scope="col" class="col-md-1">분류
                     </th>
                     <th scope="col" class="col-md-5">제    목
@@ -179,12 +180,17 @@
             <ItemTemplate>
                 <tr>
                     <td class="col-md-1"><%#Eval("category")%></td>
-                    <td class="col-md-5"><%#Eval("mainBoardTitle")%></td>
+                    <td class="col-md-5"><asp:HyperLink ID="lnkDetails" runat="server" NavigateUrl='<%# Eval("mainBoardNo", "~/Details.aspx?ID={0}") %>'><%#Eval("mainBoardTitle")%></asp:HyperLink></td>
                     <td class="col-md-2"><%#Eval("id_Name")%></td>
-                    <td class="col-md-2"><%#Eval("writeDate")%></td>
+                    <td class="col-md-2">                    
+                        <%# DateTime.Now.ToString("yyyy.MM.dd.") == String.Format("{0:yyyy.MM.dd.}", Eval("writeDate")) ? String.Format("{0:HH:mm}", Eval("writeDate")) : String.Format("{0:yyyy.MM.dd.}", Eval("writeDate")) %>
+                    </td>
+                        <%-- %><td class="col-md-2"><%#Eval("writeDate")%></td>--%>
                 </tr>
             </ItemTemplate>
-
+            <FooterTemplate>
+                </table>
+            </FooterTemplate>
         </asp:Repeater>
         <div id="pagingDiv"></div>
         <img id="loadingImg" src="loading.gif" />

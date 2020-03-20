@@ -22,8 +22,7 @@ namespace WebApplication1.Page_Basic
             {
                 BindRepeator();
             }            
-        }
-        
+        }        
         private void BindRepeator()
         {
             using(SqlConnection sqlCon = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ToString()))
