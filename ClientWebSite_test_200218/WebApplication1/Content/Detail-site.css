@@ -42,8 +42,6 @@
         }
 }
 
-
-
 #content {
     position: relative;
     border: dashed 2px #CCC;
@@ -117,4 +115,33 @@
         color: #f0f0f0;
         background: #616161;
     }
+
+.borders-lightgray {
+    border: 1px solid #ddd;
+}
+
+#content-area .fl {
+    float: left;
+}
+
+.list-blog .tit-box .fl {
+    width: 470px;
+    margin-top: 4px;
+}
+
+#content-area .fr {
+    float: right;
+}
+
+.list-blog .tit-box .fr, .gate-box .tit-box .fr {
+    margin-top: 6px;
+}
+
+#board_Content {
+    width: 100%;
+    position: relative;
+    overflow-y: hidden;
+    overflow-x: auto !important;
+    z-index: 0;
+}
 
