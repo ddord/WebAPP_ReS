@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -13,5 +14,12 @@ namespace WebApplication1.Page_Basic
         {
 
         }
+        /*
+        public DataTable Read(string category, int number)
+        {
+            string query = String.Format("SELECT * FROM mainBoard WHERE category='{0}' AND mainBoardNo={1}", category, number);
+            return DB.ExecuteQueryDataTable(query);
+        }
+        */
     }
 }

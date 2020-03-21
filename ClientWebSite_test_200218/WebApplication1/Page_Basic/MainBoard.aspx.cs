@@ -34,6 +34,12 @@ namespace WebApplication1.Page_Basic
                 RepeaterMainBoardList.DataBind();
             }
         }
-        
+
+        protected void lnkbDetails_Click(object sender, EventArgs e)
+        {
+            LinkButton link = sender as LinkButton;
+            Session["Arg"] = link.CommandArgument.ToString();
+            Response.Redirect("MainBoardView.aspx");
+        }
     }
 }

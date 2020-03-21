@@ -180,7 +180,8 @@
             <ItemTemplate>
                 <tr>
                     <td class="col-md-1"><%#Eval("category")%></td>
-                    <td class="col-md-5"><asp:HyperLink ID="lnkDetails" runat="server" NavigateUrl='<%# Eval("mainBoardNo", "~/Details.aspx?ID={0}") %>'><%#Eval("mainBoardTitle")%></asp:HyperLink></td>
+                    <td class="col-md-5">
+                        <asp:LinkButton ID="lnkbDetails" runat="server" Text='<%# Eval("mainBoardTitle")%>' CommandArgument='<%# Eval("category") + "/" + Eval("mainBoardNo")%>' OnClick="lnkbDetails_Click"></asp:LinkButton></td>
                     <td class="col-md-2"><%#Eval("id_Name")%></td>
                     <td class="col-md-2">                    
                         <%# DateTime.Now.ToString("yyyy.MM.dd.") == String.Format("{0:yyyy.MM.dd.}", Eval("writeDate")) ? String.Format("{0:HH:mm}", Eval("writeDate")) : String.Format("{0:yyyy.MM.dd.}", Eval("writeDate")) %>
