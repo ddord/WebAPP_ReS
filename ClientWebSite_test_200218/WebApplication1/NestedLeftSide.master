@@ -19,7 +19,7 @@
             } 
         });
     </script>
-    <div class="row col-xs-12">
+    <div class="col-xs-12">
         <div class ="col-xs-2">
             <div class="sidenav">
                 <div id="sideMenuTitle"></div>
