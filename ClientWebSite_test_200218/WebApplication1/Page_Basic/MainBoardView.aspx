@@ -9,7 +9,8 @@
                         <tbody>
                             <tr style="vertical-align:top;">
                                 <td class="">
-                                    <asp:Label ID="lblBoardTilte" runat="server" Text="board_Title" CssClass="Title_14px b"></asp:Label></td>
+                                    <asp:Label ID="lblBoardTilte" runat="server" Text="board_Title" CssClass="Title_14px b"></asp:Label>
+                                </td>
                                 <td></td>
                             </tr>
                         </tbody>
@@ -21,7 +22,8 @@
                             <tr style="vertical-align:top;">
                                 <td></td>
                                 <td class="">
-                                    <asp:Label ID="lblBoardDate" runat="server" Text="board_Date" CssClass="text-right date_11px"></asp:Label></td>
+                                    <asp:Label ID="lblBoardDate" runat="server" Text="board_Date" CssClass="text-right date_11px"></asp:Label>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -33,14 +35,16 @@
                     <tbody>
                         <tr>
                             <td class="" id="board_NickName">
-                                <asp:Label ID="lblBoardNickName" runat="server" Text="board_NickName" CssClass=""></asp:Label><asp:Label ID="lblUserId" runat="server" Text="lblUserId"></asp:Label></td>
+                                <asp:Label ID="lblBoardNickName" runat="server" Text="board_NickName" CssClass=""></asp:Label><asp:Label ID="lblUserId" runat="server" Text="lblUserId"></asp:Label>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
             <div class="h3"></div>
             <div class="" id="board_Content">
-                <asp:Label ID="lblBoardContent" runat="server" Text="board_Content" CssClass=""></asp:Label></div>
+                <asp:Label ID="lblBoardContent" runat="server" Text="board_Content" CssClass=""></asp:Label>
+            </div>
         </div>
     </div>
 </asp:Content>
