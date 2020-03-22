@@ -195,7 +195,6 @@
         </asp:Repeater>
         <div id="pagingDiv"></div>
         <img id="loadingImg" src="loading.gif" />
-        <asp:Button ID="submitButton" Text="Bind GridView" runat="server" />
     </div>
 </asp:Content>
 

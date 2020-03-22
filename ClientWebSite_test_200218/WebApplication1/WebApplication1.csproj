@@ -172,6 +172,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfigdd.cs" />
+    <Compile Include="classL_common\CommonCode.cs" />
+    <Compile Include="classL_common\DataBase.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

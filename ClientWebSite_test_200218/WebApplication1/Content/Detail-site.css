@@ -120,28 +120,53 @@
     border: 1px solid #ddd;
 }
 
-#content-area .fl {
+.tit-box {
+    width: auto;
+}
+
+#inbox .fl {
     float: left;
 }
 
-.list-blog .tit-box .fl {
-    width: 470px;
-    margin-top: 4px;
-}
-
-#content-area .fr {
+#inbox .fr {
     float: right;
 }
 
-.list-blog .tit-box .fr, .gate-box .tit-box .fr {
-    margin-top: 6px;
+.width-16 {
+    width: 16.33333333%;
 }
 
-#board_Content {
+.width-83 {
+    width: 83.33333333%;
+}
+
+.width-100 {
+    width: 100%;
+}
+
+#inbox {
     width: 100%;
     position: relative;
     overflow-y: hidden;
     overflow-x: auto !important;
     z-index: 0;
+}
+
+.b {
+    font-weight: bold;
+}
+
+.Title_14px{
+    font-size: 14px
+}
+
+.date_11px {
+    color: #666;
+    font-size: 11px;
+    word-wrap: break-word;
+}
+
+div, li, dd, dt, td, select, textarea, input {
+    font-family: "Apple SD Gothic Neo", "맑은 고딕", "Malgun Gothic", 돋움, dotum, sans-serif !important;
 }
 

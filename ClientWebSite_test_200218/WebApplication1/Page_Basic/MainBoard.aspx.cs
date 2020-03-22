@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Script.Serialization;
+using System.Web.Security;
 using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -37,9 +38,21 @@ namespace WebApplication1.Page_Basic
 
         protected void lnkbDetails_Click(object sender, EventArgs e)
         {
-            LinkButton link = sender as LinkButton;
-            Session["Arg"] = link.CommandArgument.ToString();
-            Response.Redirect("MainBoardView.aspx");
+            CheckLogining(sender);
+        }
+
+        private void CheckLogining(object sender)
+        {
+            if (Request.IsAuthenticated)
+            {
+                LinkButton link = sender as LinkButton;
+                Session["Arg"] = link.CommandArgument.ToString();
+                Response.Redirect("MainBoardView.aspx");
+            }
+            else
+            {
+                Response.Write("<script>alert('로그인이 필요합니다.') ; location.href= 'LoginMain.aspx'</script>");
+            }
         }
     }
 }
