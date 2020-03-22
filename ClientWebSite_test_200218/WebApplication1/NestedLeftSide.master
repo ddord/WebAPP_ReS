@@ -7,9 +7,9 @@
             if (title.includes("메인 게시판")) {
                 $("#sideMenuTitle").append("<a>메인 게시판</a>");
                 $("#sideMenuTitle").append("<a href=\"/Page_Basic/MainBoard.aspx\">게시판</a>");
-                $("#sideMenuTitle").append("<a href=\"#\">Services</a>");
-                $("#sideMenuTitle").append("<a href=\"#\">Clients</a>");
-                $("#sideMenuTitle").append("<a href=\"#\">Contact</a>");
+                //$("#sideMenuTitle").append("<a href=\"#\">Services</a>");
+                //$("#sideMenuTitle").append("<a href=\"#\">Clients</a>");
+                //$("#sideMenuTitle").append("<a href=\"#\">Contact</a>");
             }
             else {
                 $("#sideMenuTitle").append("<a href=\"#\">About</a>");
