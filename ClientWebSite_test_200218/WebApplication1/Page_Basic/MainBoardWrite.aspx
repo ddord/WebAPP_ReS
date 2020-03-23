@@ -18,7 +18,7 @@
                 <asp:Label ID="lblBoardWrite3" runat="server" Text="내용" CssClass="width-8 label_title"></asp:Label>
                 <div class="width-84"> 
                     <asp:TextBox ID="txbBoardContent" runat="server" Width="740px" Height="500px" TextMode="MultiLine"></asp:TextBox>
-                    <div></div>
+                    
                 </div>
             </li>
         </ul>
