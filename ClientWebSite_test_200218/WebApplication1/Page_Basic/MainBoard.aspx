@@ -163,6 +163,9 @@
     </script>
 
     <div class="panel-body">
+        <div class="h6">
+            <asp:Button ID="btnBoardWrite" runat="server" Text="글쓰기" CssClass="btn btn-default b" Visible="false" OnClick="btnBoardWrite_Click"/>
+        </div>
         <asp:Repeater ID="RepeaterMainBoardList" runat="server">
             <HeaderTemplate>
                 <table  border="1">
@@ -186,7 +189,7 @@
                     <td class="col-md-2">                    
                         <%# DateTime.Now.ToString("yyyy.MM.dd.") == String.Format("{0:yyyy.MM.dd.}", Eval("writeDate")) ? String.Format("{0:HH:mm}", Eval("writeDate")) : String.Format("{0:yyyy.MM.dd.}", Eval("writeDate")) %>
                     </td>
-                        <%-- %><td class="col-md-2"><%#Eval("writeDate")%></td>--%>
+                        <%--<td class="col-md-2"><%#Eval("writeDate")%></td>--%>
                 </tr>
             </ItemTemplate>
             <FooterTemplate>
@@ -194,7 +197,7 @@
             </FooterTemplate>
         </asp:Repeater>
         <div id="pagingDiv"></div>
-        <img id="loadingImg" src="loading.gif" />
+        <%--<img id="loadingImg" src="loading.gif" />--%>
     </div>
 </asp:Content>
 

@@ -177,11 +177,12 @@
 .ul_width740 > li {
     width: 740px;
     list-style:none;
-    padding-bottom: 9px;
+    padding-bottom: 10px;
 }
 
 .ul_width740 > li > div {
-    padding:0 0 0 68px;
+    padding: 0 0 0 10px;
+    margin-bottom: 10px;
 }
 
 div, li, dd, dt, td, select, textarea, input {

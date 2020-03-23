@@ -225,7 +225,7 @@ namespace WebApplication1.Page_Basic
                 {
                     SqlCommand sqlComm = new SqlCommand();
                     sqlConn.Open();
-                    sqlComm = new SqlCommand("pro_userInfo_CRUD", sqlConn);
+                    sqlComm = new SqlCommand("sp_userInfo_CRUD", sqlConn);
                     sqlComm.CommandType = CommandType.StoredProcedure;
 
                     sqlComm.Parameters.Add("@userID", SqlDbType.NVarChar).Value = userInfo.ID;
@@ -260,7 +260,7 @@ namespace WebApplication1.Page_Basic
             {
                 SqlCommand sqlComm = new SqlCommand();
                 sqlConn.Open();
-                sqlComm = new SqlCommand("pro_userInfo_CRUD", sqlConn);
+                sqlComm = new SqlCommand("sp_userInfo_CRUD", sqlConn);
                 sqlComm.CommandType = CommandType.StoredProcedure;
                 
                 sqlComm.Parameters.Add("@userID", SqlDbType.NVarChar).Value = txbUserID.ToString();

@@ -22,16 +22,30 @@ namespace WebApplication1.Page_Basic
             if (!IsPostBack)
             {
                 BindRepeator();
+
+                if (Request.IsAuthenticated)
+                {
+                    btnBoardWrite.Visible = true;
+                }
             }            
         }        
         private void BindRepeator()
         {
             using(SqlConnection sqlCon = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ToString()))
             {
-                SqlCommand sqlcomm = new SqlCommand("GetMainBoardList", sqlCon);
-                sqlcomm.CommandType = CommandType.StoredProcedure;
+                SqlCommand sqlComm = new SqlCommand("sp_MainBoard_CRUD", sqlCon);
+                sqlComm.CommandType = CommandType.StoredProcedure;
                 sqlCon.Open();
-                RepeaterMainBoardList.DataSource = sqlcomm.ExecuteReader();
+                sqlComm.Parameters.Add("@mainBoardNo", SqlDbType.Int).Value = 0;
+                sqlComm.Parameters.Add("@userID", SqlDbType.NVarChar).Value = "";
+                sqlComm.Parameters.Add("@category", SqlDbType.NVarChar).Value = "";
+                sqlComm.Parameters.Add("@id_Name", SqlDbType.NVarChar).Value = "";
+                sqlComm.Parameters.Add("@mainBoardTitle", SqlDbType.NVarChar).Value = "";
+                sqlComm.Parameters.Add("@mainBoardContent", SqlDbType.NVarChar).Value = "";
+                sqlComm.Parameters.Add("@writeDate", SqlDbType.DateTime).Value = DateTime.Now;
+                sqlComm.Parameters.Add("@StatementType", SqlDbType.NVarChar).Value = "Select";
+
+                RepeaterMainBoardList.DataSource = sqlComm.ExecuteReader();
                 RepeaterMainBoardList.DataBind();
             }
         }
@@ -53,6 +67,11 @@ namespace WebApplication1.Page_Basic
             {
                 Response.Write("<script>alert('로그인이 필요합니다.') ; location.href= 'LoginMain.aspx'</script>");
             }
+        }
+
+        protected void btnBoardWrite_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("MainBoardWrite.aspx");
         }
     }
 }

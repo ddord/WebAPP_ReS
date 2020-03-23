@@ -25,8 +25,7 @@ namespace WebApplication1.Page_Basic
             lblBoardDate.Text = String.Format("{0:yyyy.MM.dd. hh:mm}", dataRow["writeDate"]);
             lblBoardNickName.Text = dataRow["id_Name"].ToString();
             lblUserId.Text = "(" + String.Format("{0}****", dataRow["userID"].ToString().Substring(0, 3)) + ")";
-            lblBoardContent.Text = dataRow["mainBoardContent"].ToString();
-            
+            lblBoardContent.Text = dataRow["mainBoardContent"].ToString();            
         }
 
         public DataTable Read(string category, string number)
