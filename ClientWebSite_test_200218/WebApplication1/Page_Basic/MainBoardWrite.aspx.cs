@@ -23,7 +23,7 @@ namespace WebApplication1.Page_Basic
 
         protected void btnWrite_Click(object sender, EventArgs e)
         {
-            using (SqlConnection sqlConn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ToString()))
+            /*using (SqlConnection sqlConn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ToString()))
             {
                 SqlCommand sqlComm = new SqlCommand();
                 sqlConn.Open();
@@ -43,7 +43,7 @@ namespace WebApplication1.Page_Basic
 
                 Response.Write("<script>alert('글 작성 완료.') ; location.href= 'MainBoard.aspx'</script>");
 
-            }
+            }*/
         }
     }
 }
