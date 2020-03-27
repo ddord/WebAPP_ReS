@@ -21,7 +21,7 @@ namespace WebApplication1.Page_Basic
         {            
             if (!IsPostBack)
             {
-                BindRepeator();
+                BindRepeator(1, int.Parse(ddlListCount.SelectedItem.ToString()));
 
                 if (Request.IsAuthenticated)
                 {
@@ -46,8 +46,53 @@ namespace WebApplication1.Page_Basic
                 sqlComm.Parameters.Add("@StatementType", SqlDbType.NVarChar).Value = "Select";
 
                 RepeaterMainBoardList.DataSource = sqlComm.ExecuteReader();
-                RepeaterMainBoardList.DataBind();
+                RepeaterMainBoardList.DataBind();                
             }
+        }
+
+        private void BindRepeator(int pageIndex, int pageSize)
+        {
+            using (SqlConnection sqlCon = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ToString()))
+            {
+                using (SqlCommand sqlCom = new SqlCommand("sp_GetMainboard_PageCount", sqlCon))
+                {
+                    sqlCom.CommandType = CommandType.StoredProcedure;
+                    sqlCom.Parameters.AddWithValue("@pageIndex", pageIndex);
+                    sqlCom.Parameters.AddWithValue("@pageSize", pageSize);
+                    sqlCom.Parameters.Add("@recordCount", SqlDbType.Int, 4);
+                    sqlCom.Parameters["@recordCount"].Direction = ParameterDirection.Output;
+                    sqlCon.Open();
+                    IDataReader idr = sqlCom.ExecuteReader();
+                    RepeaterMainBoardList.DataSource = idr;
+                    RepeaterMainBoardList.DataBind();
+                    idr.Close();
+                    sqlCon.Close();
+                    int recordCount = Convert.ToInt32(sqlCom.Parameters["@RecordCount"].Value);
+                    this.PopulatePager(recordCount, pageIndex, pageSize);
+                }
+            }
+        }
+
+        private void PopulatePager(int recordCount, int currentPage, int pageSize)
+        {
+            double dblPageCount = (double)((decimal)recordCount / Convert.ToDecimal(pageSize));
+            int pageCount = (int)Math.Ceiling(dblPageCount);
+            List<ListItem> pages = new List<ListItem>();
+            if (pageCount > 0)
+            {
+                for (int i = 1; i <= pageCount; i++)
+                {
+                    pages.Add(new ListItem(i.ToString(), i.ToString(), i != currentPage));
+                }
+            }
+            rptPager.DataSource = pages;
+            rptPager.DataBind();
+        }
+
+        protected void Page_Changed(object sender, EventArgs e)
+        {
+            int pageIndex = int.Parse((sender as LinkButton).CommandArgument);
+            this.BindRepeator(pageIndex, int.Parse(ddlListCount.SelectedItem.ToString()));
         }
 
         protected void lnkbDetails_Click(object sender, EventArgs e)
@@ -72,6 +117,11 @@ namespace WebApplication1.Page_Basic
         protected void btnBoardWrite_Click(object sender, EventArgs e)
         {
             Response.Redirect("MainBoardWrite.aspx");
+        }
+
+        protected void ddlListCount_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            BindRepeator(1, int.Parse(ddlListCount.SelectedItem.ToString()));
         }
     }
 }

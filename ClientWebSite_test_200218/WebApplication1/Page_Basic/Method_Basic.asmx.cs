@@ -80,5 +80,44 @@ namespace WebApplication1.Page_Basic
             sqlDataAdapter.Fill(dataSet);
             return dataSet.GetXml();
         }
+
+        [WebMethod]
+        public static string GetCustomers(int pageIndex, int pageSize)
+        {
+            string query = "[sp_GetMainboard_PageCount]";
+            SqlCommand cmd = new SqlCommand(query);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@pageIndex", pageIndex);
+            cmd.Parameters.AddWithValue("@pageSize", pageSize);
+            cmd.Parameters.Add("@recordCount", SqlDbType.Int, 4).Direction = ParameterDirection.Output;
+            return GetData(cmd, pageIndex, pageSize).GetXml();
+        }
+
+        private static DataSet GetData(SqlCommand cmd, int pageIndex, int pageSize)
+        {
+            string strConnString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(strConnString))
+            {
+                using (SqlDataAdapter sqlDataAdapter = new SqlDataAdapter())
+                {
+                    cmd.Connection = con;
+                    sqlDataAdapter.SelectCommand = cmd;
+                    using (DataSet ds = new DataSet())
+                    {
+                        sqlDataAdapter.Fill(ds, "mainBoardNo");
+                        DataTable dt = new DataTable("Pager");
+                        dt.Columns.Add("pageIndex");
+                        dt.Columns.Add("pageSize");
+                        dt.Columns.Add("recordCount");
+                        dt.Rows.Add();
+                        dt.Rows[0]["pageIndex"] = pageIndex;
+                        dt.Rows[0]["pageSize"] = pageSize;
+                        dt.Rows[0]["recordCount"] = cmd.Parameters["@recordCount"].Value;
+                        ds.Tables.Add(dt);
+                        return ds;
+                    }
+                }
+            }
+        }
     }
 }
