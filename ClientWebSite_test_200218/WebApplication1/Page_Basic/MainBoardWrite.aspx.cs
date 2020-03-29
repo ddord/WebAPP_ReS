@@ -18,6 +18,11 @@ namespace WebApplication1.Page_Basic
             {
                 ddlBoardCategory.Items.Add("자유게시판");
                 ddlBoardCategory.Items.Add("공지사항");
+                string previousUrl = Request.UrlReferrer.ToString();
+                if (previousUrl.Contains("MainBoardView"))
+                {
+                    btnWrite.Text = "수정";
+                }
             }
         }
 

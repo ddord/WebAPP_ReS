@@ -29,9 +29,9 @@ namespace WebApplication1.Page_Basic
 
             if (!IsPostBack)
             {
-                if (Request.IsAuthenticated)
+                if (Request.IsAuthenticated && (dataRow["userID"].ToString() == Session["userID"].ToString()))
                 {
-
+                    btnBoardModify.Visible = true;
                 }
             }
         }
@@ -50,7 +50,7 @@ namespace WebApplication1.Page_Basic
 
         protected void btnBoardModify_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("MainBoardWrite.aspx");
         }
     }
 }
