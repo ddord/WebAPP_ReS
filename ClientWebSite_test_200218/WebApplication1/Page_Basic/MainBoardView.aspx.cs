@@ -25,7 +25,15 @@ namespace WebApplication1.Page_Basic
             lblBoardDate.Text = String.Format("{0:yyyy.MM.dd. hh:mm}", dataRow["writeDate"]);
             lblBoardNickName.Text = dataRow["id_Name"].ToString();
             lblUserId.Text = "(" + String.Format("{0}****", dataRow["userID"].ToString().Substring(0, 3)) + ")";
-            lblBoardContent.Text = dataRow["mainBoardContent"].ToString();            
+            lblBoardContent.Text = dataRow["mainBoardContent"].ToString();
+
+            if (!IsPostBack)
+            {
+                if (Request.IsAuthenticated)
+                {
+
+                }
+            }
         }
 
         public DataTable Read(string category, string number)
@@ -38,6 +46,11 @@ namespace WebApplication1.Page_Basic
         protected void btnListBack_Click(object sender, EventArgs e)
         {
             Response.Redirect("MainBoard.aspx");
+        }
+
+        protected void btnBoardModify_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

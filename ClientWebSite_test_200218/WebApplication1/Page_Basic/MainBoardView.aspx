@@ -1,8 +1,14 @@
 ﻿<%@ Page Title="메인 게시판 조회" Language="C#" MasterPageFile="~/NestedLeftSide.master" AutoEventWireup="true" CodeBehind="MainBoardView.aspx.cs" Inherits="WebApplication1.Page_Basic.MainBoardView" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContentSub" runat="server">
     <div class="panel-body" id="inbox">
-        <div class="h6 text-right">            
-            <asp:Button ID="btnListBack" runat="server" CssClass="btn btn-default" Height="30" Text="목록" OnClick="btnListBack_Click" /></div>
+        <div class="h6 text-right">   
+            <span class="margin_LR_5">
+                <asp:Button ID="btnBoardModify" runat="server" CssClass="btn btn-default" Height="30" Text="수정" OnClick="btnBoardModify_Click" Visible="False" />
+            </span>
+            <span>
+                <asp:Button ID="btnListBack" runat="server" CssClass="btn btn-default" Height="30" Text="목록" OnClick="btnListBack_Click" />
+            </span>          
+        </div>
         <div class="border borders-lightgray" id="post_article">
             <div class="tit-box">
                 <div class="fl width-83">

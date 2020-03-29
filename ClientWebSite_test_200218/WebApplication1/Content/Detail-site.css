@@ -203,7 +203,7 @@ div, li, dd, dt, td, select, textarea, input {
     font-weight: bold;
 }
 
-.page_disabled {
-    background-color: #fff;
+.margin_LR_5 {
+    margin-left: 5px;
+    margin-right: 5px;
 }
-
