@@ -69,7 +69,6 @@ namespace WebApplication1.Page_Basic
                 sqlComm.Parameters.Add("@mainBoardContent", SqlDbType.NVarChar).Value = txbBoardContent.Text;
                 sqlComm.Parameters.Add("@writeDate", SqlDbType.DateTime).Value = DateTime.Now;
                 sqlComm.Parameters.Add("@StatementType", SqlDbType.NVarChar).Value = stateType;
-
                 sqlComm.ExecuteNonQuery();
                 
                 Response.Write("<script>alert('" + returnMessage + "') ; location.href= 'MainBoardView.aspx'</script>");
