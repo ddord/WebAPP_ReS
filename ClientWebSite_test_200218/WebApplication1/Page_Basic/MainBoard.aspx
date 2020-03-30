@@ -52,10 +52,8 @@
 --%>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentSub" runat="server">
-    <script src="/Scripts/jquery-3.3.1.min.js"></script>
-    <script src="ASPSnippets_Pager.min.js" type="text/javascript"></script>
+    <script src="/Scripts/jquery-3.3.1.min.js"></script> 
     
-
     <div class="panel-body">
         <div class="h6">
             <div style="float:left;">

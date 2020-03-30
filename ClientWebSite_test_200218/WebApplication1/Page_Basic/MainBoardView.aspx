@@ -5,7 +5,10 @@
             <span class="margin_LR_5">
                 <asp:Button ID="btnBoardModify" runat="server" CssClass="btn btn-default" Height="30" Text="수정" OnClick="btnBoardModify_Click" Visible="False" />
             </span>
-            <span>
+            <span class="margin_LR_5">
+                <asp:Button ID="btnBoardDelete" runat="server" CssClass="btn btn-default" Height="30" Text="삭제" OnClick="btnBoardDelete_Click" Visible="False" />
+            </span>
+            <span class="margin_LR_5">
                 <asp:Button ID="btnListBack" runat="server" CssClass="btn btn-default" Height="30" Text="목록" OnClick="btnListBack_Click" />
             </span>          
         </div>

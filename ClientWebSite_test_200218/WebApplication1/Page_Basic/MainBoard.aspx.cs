@@ -67,7 +67,7 @@ namespace WebApplication1.Page_Basic
                     RepeaterMainBoardList.DataBind();
                     idr.Close();
                     sqlCon.Close();
-                    int recordCount = Convert.ToInt32(sqlCom.Parameters["@RecordCount"].Value);
+                    int recordCount = Convert.ToInt32(sqlCom.Parameters["@recordCount"].Value);
                     this.PopulatePager(recordCount, pageIndex, pageSize);
                 }
             }

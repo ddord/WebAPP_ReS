@@ -20,22 +20,34 @@ namespace WebApplication1.Page_Basic
                 ddlBoardCategory.Items.Add("공지사항");
                 string previousUrl = Request.UrlReferrer.ToString();
                 if (previousUrl.Contains("MainBoardView"))
-                {
                     btnWrite.Text = "수정";
-                }
+                else
+                    btnWrite.Text = "확인";
             }
         }
 
         protected void btnWrite_Click(object sender, EventArgs e)
         {
-            /*using (SqlConnection sqlConn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ToString()))
+            using (SqlConnection sqlConn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ToString()))
             {
                 SqlCommand sqlComm = new SqlCommand();
                 sqlConn.Open();
                 sqlComm = new SqlCommand("sp_MainBoard_CRUD", sqlConn);
                 sqlComm.CommandType = CommandType.StoredProcedure;
 
-                sqlComm.Parameters.Add("@mainBoardNo", SqlDbType.Int).Value = 0;
+                string returnMessage = "";
+                if ((btnWrite.Text == "수정") && (Session["mainBoardNo"] != null))
+                {
+                    sqlComm.Parameters.Add("@mainBoardNo", SqlDbType.Int).Value = (int)Session["mainBoardNo"];
+                    returnMessage = "글 수정 완료.";
+                    Session.Remove("mainBoardNo");
+                }
+                else
+                {
+                    sqlComm.Parameters.Add("@mainBoardNo", SqlDbType.Int).Value = 0;
+                    returnMessage = "글 작성 완료.";
+                }
+                
                 sqlComm.Parameters.Add("@userID", SqlDbType.NVarChar).Value = Session["userID"].ToString();
                 sqlComm.Parameters.Add("@category", SqlDbType.NVarChar).Value = ddlBoardCategory.SelectedValue.ToString();
                 sqlComm.Parameters.Add("@id_Name", SqlDbType.NVarChar).Value = Session["userName"].ToString();
@@ -45,10 +57,9 @@ namespace WebApplication1.Page_Basic
                 sqlComm.Parameters.Add("@StatementType", SqlDbType.NVarChar).Value = "Insert";
 
                 sqlComm.ExecuteNonQuery();
-
-                Response.Write("<script>alert('글 작성 완료.') ; location.href= 'MainBoard.aspx'</script>");
-
-            }*/
+                
+                Response.Write("<script>alert('" + returnMessage + "') ; location.href= 'MainBoard.aspx'</script>");
+            }
         }
     }
 }
