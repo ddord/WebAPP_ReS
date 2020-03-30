@@ -71,8 +71,8 @@
         </div>
         <asp:Repeater ID="RepeaterMainBoardList" runat="server">
             <HeaderTemplate>
-                <table border="1" class="width-100">
-                <tr class="board_height40">
+                <table class="width-100 ">
+                <tr class="board_height40 board_main">
                     <th scope="col" class="col-md-1">분류
                     </th>
                     <th scope="col" class="col-md-5">제    목
@@ -84,7 +84,7 @@
                 </tr>
             </HeaderTemplate>
             <ItemTemplate>
-                <tr class="board_height40">
+                <tr class="board_height30">
                     <td class="col-md-2"><%#Eval("category")%></td>
                     <td class="col-md-5">
                         <asp:LinkButton ID="lnkbDetails" runat="server" Text='<%# Eval("mainBoardTitle")%>' CommandArgument='<%# Eval("category") + "/" + Eval("mainBoardNo")%>' OnClick="lnkbDetails_Click"></asp:LinkButton></td>

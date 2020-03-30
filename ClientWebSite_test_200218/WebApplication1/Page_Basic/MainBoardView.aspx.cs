@@ -17,19 +17,21 @@ namespace WebApplication1.Page_Basic
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            string temp_Arg = Session["Arg"].ToString();
-            string[] temp_List = temp_Arg.Split('/');
-
-            DataTable dt = Read(temp_List[0].Trim(), temp_List[1].Trim());
-            dataRow = dt.Rows[0];
-
             if (!IsPostBack)
             {
+                string temp_Arg = Session["Arg"].ToString();
+                string[] temp_List = temp_Arg.Split('/');
+
+                DataTable dt = boardRead(temp_List[0].Trim(), temp_List[1].Trim());
+                dataRow = dt.Rows[0];
+                Session["mainBoardNo"] = temp_List[1].Trim();
                 lblBoardTilte.Text = dataRow["mainBoardTitle"].ToString();
                 lblBoardDate.Text = String.Format("{0:yyyy.MM.dd. hh:mm}", dataRow["writeDate"]);
                 lblBoardNickName.Text = dataRow["id_Name"].ToString();
                 lblUserId.Text = "(" + String.Format("{0}****", dataRow["userID"].ToString().Substring(0, 3)) + ")";
-                lblBoardContent.Text = dataRow["mainBoardContent"].ToString();
+                string dsd = dataRow["mainBoardContent"].ToString();
+                string www = dsd.Replace("\r\n", "<br />");
+                lblBoardContent.Text = www;
 
                 if (Request.IsAuthenticated && (dataRow["userID"].ToString() == Session["userID"].ToString()))
                 {
@@ -39,7 +41,7 @@ namespace WebApplication1.Page_Basic
             }
         }
 
-        public DataTable Read(string category, string number)
+        private DataTable boardRead(string category, string number)
         {
             DataBase DB = new DataBase();
             string query = String.Format("SELECT * FROM mainBoard WHERE category='{0}' AND mainBoardNo={1}", category, number);
@@ -53,7 +55,6 @@ namespace WebApplication1.Page_Basic
 
         protected void btnBoardModify_Click(object sender, EventArgs e)
         {
-            Session["mainBoardNo"] = dataRow["mainBoardNo"].ToString();
             Response.Redirect("MainBoardWrite.aspx");
         }
 
@@ -64,8 +65,8 @@ namespace WebApplication1.Page_Basic
                 SqlCommand sqlComm = new SqlCommand("sp_MainBoard_CRUD", sqlCon);
                 sqlComm.CommandType = CommandType.StoredProcedure;
                 sqlCon.Open();
-                sqlComm.Parameters.Add("@mainBoardNo", SqlDbType.Int).Value = dataRow["mainBoardNo"].ToString();
-                sqlComm.Parameters.Add("@userID", SqlDbType.NVarChar).Value = dataRow["userID"].ToString();
+                sqlComm.Parameters.Add("@mainBoardNo", SqlDbType.Int).Value = Session["mainBoardNo"].ToString();
+                sqlComm.Parameters.Add("@userID", SqlDbType.NVarChar).Value = Session["userID"].ToString();
                 sqlComm.Parameters.Add("@category", SqlDbType.NVarChar).Value = "";
                 sqlComm.Parameters.Add("@id_Name", SqlDbType.NVarChar).Value = "";
                 sqlComm.Parameters.Add("@mainBoardTitle", SqlDbType.NVarChar).Value = "";
@@ -74,6 +75,8 @@ namespace WebApplication1.Page_Basic
                 sqlComm.Parameters.Add("@StatementType", SqlDbType.NVarChar).Value = "Delete";
 
                 sqlComm.ExecuteReader();
+
+                Session.Remove("mainBoardNo");
             }
 
             Response.Redirect("MainBoard.aspx");

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using WebApplication1.classL_common;
 
 namespace WebApplication1.Page_Basic
 {
@@ -20,7 +21,18 @@ namespace WebApplication1.Page_Basic
                 ddlBoardCategory.Items.Add("공지사항");
                 string previousUrl = Request.UrlReferrer.ToString();
                 if (previousUrl.Contains("MainBoardView"))
+                {
                     btnWrite.Text = "수정";
+
+                    DataBase DB = new DataBase();
+                    string query = String.Format("SELECT * FROM mainBoard WHERE mainBoardNo={0}", Session["mainBoardNo"].ToString());
+                    DataTable dataTable = DB.ExecuteQueryDataTable(query);
+                    DataRow dataRow = dataTable.Rows[0];
+
+                    ddlBoardCategory.Text = dataRow["category"].ToString();
+                    txbBoardTitle.Text = dataRow["mainBoardTitle"].ToString();
+                    txbBoardContent.Text = dataRow["mainBoardContent"].ToString();
+                }                    
                 else
                     btnWrite.Text = "확인";
             }
@@ -35,17 +47,19 @@ namespace WebApplication1.Page_Basic
                 sqlComm = new SqlCommand("sp_MainBoard_CRUD", sqlConn);
                 sqlComm.CommandType = CommandType.StoredProcedure;
 
-                string returnMessage = "";
+                string returnMessage = "", stateType = "";                
                 if ((btnWrite.Text == "수정") && (Session["mainBoardNo"] != null))
                 {
-                    sqlComm.Parameters.Add("@mainBoardNo", SqlDbType.Int).Value = (int)Session["mainBoardNo"];
+                    sqlComm.Parameters.Add("@mainBoardNo", SqlDbType.Int).Value = Session["mainBoardNo"].ToString();
                     returnMessage = "글 수정 완료.";
                     Session.Remove("mainBoardNo");
+                    stateType = "Update";
                 }
                 else
                 {
                     sqlComm.Parameters.Add("@mainBoardNo", SqlDbType.Int).Value = 0;
                     returnMessage = "글 작성 완료.";
+                    stateType = "Insert";
                 }
                 
                 sqlComm.Parameters.Add("@userID", SqlDbType.NVarChar).Value = Session["userID"].ToString();
@@ -54,11 +68,11 @@ namespace WebApplication1.Page_Basic
                 sqlComm.Parameters.Add("@mainBoardTitle", SqlDbType.NVarChar).Value = txbBoardTitle.Text;
                 sqlComm.Parameters.Add("@mainBoardContent", SqlDbType.NVarChar).Value = txbBoardContent.Text;
                 sqlComm.Parameters.Add("@writeDate", SqlDbType.DateTime).Value = DateTime.Now;
-                sqlComm.Parameters.Add("@StatementType", SqlDbType.NVarChar).Value = "Insert";
+                sqlComm.Parameters.Add("@StatementType", SqlDbType.NVarChar).Value = stateType;
 
                 sqlComm.ExecuteNonQuery();
                 
-                Response.Write("<script>alert('" + returnMessage + "') ; location.href= 'MainBoard.aspx'</script>");
+                Response.Write("<script>alert('" + returnMessage + "') ; location.href= 'MainBoardView.aspx'</script>");
             }
         }
     }

@@ -189,9 +189,34 @@ div, li, dd, dt, td, select, textarea, input {
     font-family: "Apple SD Gothic Neo", "맑은 고딕", "Malgun Gothic", 돋움, dotum, sans-serif !important;
 }
 
-.board_height20 > td,
-.board_height20 > th {
+.board_height40 > th {
     height: 40px;
+}
+
+.board_height30 > td {
+    height: 30px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+tr:hover {
+    background-color: #f5f5f5;
+}
+
+.board_main > th {
+    background-color: #fefefe;
+    color: black;
+    border-top: 1px solid #111;
+    border-bottom: 1px solid #ddd;
 }
 
 .mydropdownlist_gray {
