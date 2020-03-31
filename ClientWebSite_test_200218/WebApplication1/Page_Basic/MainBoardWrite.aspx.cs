@@ -40,9 +40,6 @@ namespace WebApplication1.Page_Basic
 
         protected void btnWrite_Click(object sender, EventArgs e)
         {
-            string dsds = "안녕";
-            Console.Write(dsds);
-            /*
             using (SqlConnection sqlConn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ToString()))
             {
                 SqlCommand sqlComm = new SqlCommand();
@@ -75,7 +72,7 @@ namespace WebApplication1.Page_Basic
                 sqlComm.ExecuteNonQuery();
                 
                 Response.Write("<script>alert('" + returnMessage + "') ; location.href= 'MainBoardView.aspx'</script>");
-            }*/
+            }
         }
     }
 }

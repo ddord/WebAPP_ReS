@@ -11,27 +11,23 @@
             var titleValue, contentValue, titleRule, contentRule;
             var return_bool = false, fieldValidCount = 0;
 
-            titleValue = $("input[id$='txbBoardTitle']").val();
-            contentValue = $("input[id$='txbBoardContent']").val();
-            titleRule = /[\w가-힣\s!@#$%^*()\-_=+\\\|\[\]{};:\'",.<>\/?]{1,50}$/;
-            contentRule = /[\w가-힣\s!@#$%^*()\-_=+\\\|\[\]{};:\'",.<>\/?]{1,300}$/;
+            titleValue = $("input[id$='txbBoardTitle']").val().trim();
+            contentValue = $("textarea[id$='txbBoardContent']").val().trim();
+            titleRule = /^[\w가-힣ㄱ-ㅎㅏ-ㅣ\s!@#$%^*()\-_=+\\\|\[\]{};:\'",.<>\/?]{1,50}$/;
+            contentRule = /^[\w가-힣ㄱ-ㅎㅏ-ㅣ\s!@#$%^*()\-_=+\\\|\[\]{};:\'",.<>\/?]{1,300}$/;
 
-            if (titleValue == "") {
-                $("#titleValiMessage").text("제목을 적어주세요.");
-            }
-            else if (titleRule.test(titleValue)) {
-                $("#titleValiMessage").text("작성한 내용을 확인해주세요. (특수문자, 한문 등)");
-            }
+            if (titleValue == "")
+                alert("제목을 적어주세요.");
+            else if (!titleRule.test(titleValue))
+                alert("작성한 제목을 확인해주세요. (특수문자, 한문 등)");
             else
                 fieldValidCount += 1;
 
-            if (contentValue == "") {
-                $("#contentValiMessage").text("내용을 적어주세요.");
-            }
-            else if (contentRule.test(contentValue)) {
-                $("#contentValiMessage").text("작성한 내용을 확인해주세요. (특수문자, 한문 등)");
-            }
-            else
+            if (contentValue == "")
+                alert("내용을 적어주세요.");
+            else if (!contentRule.test(contentValue))
+                alert("작성한 내용을 확인해주세요. (특수문자, 한문 등)");
+            else 
                 fieldValidCount += 1;
 
             if (fieldValidCount == 2)
@@ -58,7 +54,6 @@
                 </div>
                 <div class="col-xs-11">
                     <asp:TextBox ID="txbBoardTitle" runat="server" Width="450px" CausesValidation="True"></asp:TextBox>
-                    <div id ="titleValiMessage" class="error_label"></div>
                 </div>
             </li>
             <li>
@@ -67,7 +62,6 @@
                 </div>
                 <div class="col-xs-11"> 
                     <asp:TextBox ID="txbBoardContent" runat="server" Width="740px" Height="500px" TextMode="MultiLine"></asp:TextBox> 
-                    <div id ="contentValiMessage" class="error_label"></div>
                 </div>
                 
             </li>
