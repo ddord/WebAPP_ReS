@@ -1,10 +1,16 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/NestedLeftSide.master" AutoEventWireup="true" CodeBehind="MainBoardWrite.aspx.cs" Inherits="WebApplication1.Page_Basic.MainBoardWrite" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContentSub" runat="server">
-    <script src="/Scripts/jquery-3.3.1.min.js"></script>
-    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.19.1/jquery.validate.min.js" type="text/javascript"></script>  
+    <link rel="stylesheet" href="../Content/kendo.default-v2.min.css" />
     
+    <script src="/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="../Scripts/kendo.all.min.js"></script>
+
     <script type="text/javascript">                
         $(document).ready(function () {
+            $("#editor").kendoEditor({ resizable: {
+                        content: true,
+                        toolbar: true
+                    }});
         }); 
 
         function validateMessage() {
@@ -12,7 +18,7 @@
             var return_bool = false, fieldValidCount = 0;
 
             titleValue = $("input[id$='txbBoardTitle']").val().trim();
-            contentValue = $("textarea[id$='txbBoardContent']").val().trim();
+            contentValue = $("#editor").val().trim();
             titleRule = /^[\w가-힣ㄱ-ㅎㅏ-ㅣ\s!@#$%^*()\-_=+\\\|\[\]{};:\'",.<>\/?]{1,50}$/;
             contentRule = /^[\w가-힣ㄱ-ㅎㅏ-ㅣ\s!@#$%^*()\-_=+\\\|\[\]{};:\'",.<>\/?]{1,300}$/;
 
@@ -61,7 +67,8 @@
                     <asp:Label ID="lblBoardWrite3" runat="server" Text="내용" CssClass="width-8 label_title"></asp:Label>
                 </div>
                 <div class="col-xs-11"> 
-                    <asp:TextBox ID="txbBoardContent" runat="server" Width="740px" Height="500px" TextMode="MultiLine"></asp:TextBox> 
+                    <textarea id="editor" name="editor" rows="10" cols="30" style="width:740px;height:500px" aria-label="editor"></textarea>
+                    <%-- <asp:TextBox ID="txbBoardContent" runat="server" Width="740px" Height="500px" TextMode="MultiLine"></asp:TextBox> --%>
                 </div>
                 
             </li>

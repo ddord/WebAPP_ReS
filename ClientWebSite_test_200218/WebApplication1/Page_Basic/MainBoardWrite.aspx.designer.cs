@@ -58,15 +58,6 @@ namespace WebApplication1.Page_Basic {
         protected global::System.Web.UI.WebControls.Label lblBoardWrite3;
         
         /// <summary>
-        /// txbBoardContent control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txbBoardContent;
-        
-        /// <summary>
         /// btnWrite control.
         /// </summary>
         /// <remarks>
