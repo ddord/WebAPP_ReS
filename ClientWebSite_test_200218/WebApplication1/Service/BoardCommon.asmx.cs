@@ -16,11 +16,15 @@ namespace WebApplication1.Service
     // [System.Web.Script.Services.ScriptService]
     public class BoardCommon : System.Web.Services.WebService
     {
+        protected BoardBehavior boardBehavior = new BoardBehavior();
 
         [WebMethod]
-        public string InsertBoardWrite()
+        public bool InsertBoardWrite(string userId, string userName, string category, string mainBoardTitle, string mainBoardContent)
         {
-            return "Hello World";
+            boardBehavior.insertBoardWrite(userId, userName, category, mainBoardTitle, mainBoardContent, DateTime.Now);
+
+
+            return true;
         }
     }
 }
