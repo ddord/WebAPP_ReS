@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/NestedLeftSide.master" AutoEventWireup="true" CodeBehind="MainBoardWrite.aspx.cs" Inherits="WebApplication1.Page_Basic.MainBoardWrite" %>
+﻿<%@ Page Title="메인 게시판 작성" Language="C#" MasterPageFile="~/NestedLeftSide.master" AutoEventWireup="true" CodeBehind="MainBoardWrite.aspx.cs" Inherits="WebApplication1.Page_Basic.MainBoardWrite" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContentSub" runat="server">
     <link rel="stylesheet" href="../Content/kendo.default-v2.min.css" />
     
@@ -7,12 +7,68 @@
 
     <script type="text/javascript">                
         $(document).ready(function () {
+            userID = '<%= UserId %>';
+            userName = '<%= UserName %>';
             $("#editor").kendoEditor({ resizable: {
                         content: true,
                         toolbar: true
                     }});
-        }); 
+        });
+        
+        function boardWrite() {
+            var titleValue, contentValue, titleRule, contentRule;
+            var fieldValidCount = 0;
 
+            titleValue = $("input[id$='txbBoardTitle']").val().trim();
+            contentValue = $("#editor").val().trim();
+            titleRule = /^[\w가-힣ㄱ-ㅎㅏ-ㅣ\s!@#$%^*()\-_=+\\\|\[\]{};:\'",.<>\/?]{1,50}$/;
+            contentRule = /^[\w가-힣ㄱ-ㅎㅏ-ㅣ\s!@#$%^*()\-_=+\\\|\[\]{};:\'",.<>\/?]{1,300}$/;
+
+            if (titleValue == "")
+                alert("제목을 적어주세요.");
+            else if (!titleRule.test(titleValue))
+                alert("작성한 제목을 확인해주세요. (특수문자, 한문 등)");
+            else
+                fieldValidCount += 1;
+
+            if (contentValue == "")
+                alert("내용을 적어주세요.");
+            else if (!contentRule.test(contentValue))
+                alert("작성한 내용을 확인해주세요. (특수문자, 한문 등)");
+            else 
+                fieldValidCount += 1;
+
+            if (fieldValidCount == 2)
+                var insertValue = {
+                    userId: userID,
+                    userName: userName,
+                    category: $("#ddlBoardCategory").val(),
+                    mainBoardTitle: titleValue,
+                    mainBoardContent: contentValue
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: "../Service/BoardCommon.asmx/InsertBoardWrite",
+                    data: JSON.stringify(insertValue),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        if (data.d > 0) {
+                            alert("작성완료");
+                            location.href = "/Page_Basic/MainBoardView.aspx?iNum=" + data.d;
+                        } else {
+                            alert("작성실패");
+                        }
+                    },
+                    error: function (request, status, error) {
+                        alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+                    }
+                });
+
+        }
+
+        <%--
         function validateMessage() {
             var titleValue, contentValue, titleRule, contentRule;
             var return_bool = false, fieldValidCount = 0;
@@ -41,6 +97,7 @@
 
             return return_bool;
         }
+        --%>
     </script>  
 
     <div class="panel-body" id="inbox">
@@ -74,7 +131,8 @@
             </li>
             <li>
                 <div> 
-                    <asp:Button ID="btnWrite" runat="server" Text="확인" CssClass="btn btn-default b" OnClick="btnWrite_Click" OnClientClick ="return validateMessage();" />                   
+                    <button ID="btnWrite" class="btn btn-default b" OnClick="boardWrite()">등록</button>
+                    <%-- <asp:Button ID="btnWrite" runat="server" Text="확인" CssClass="btn btn-default b" OnClick="btnWrite_Click" OnClientClick ="return validateMessage();" /> --%>                   
                 </div>
             </li>
         </ul>

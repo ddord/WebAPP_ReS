@@ -13,8 +13,21 @@ namespace WebApplication1.Page_Basic
 {
     public partial class MainBoardWrite : System.Web.UI.Page
     {
+        protected string UserId = string.Empty;
+        protected string UserName = string.Empty;
+        protected string MainBoardNo = string.Empty;
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            UserId = Session["userID"].ToString();
+            UserName = Session["userName"].ToString();
+
+            if (!IsPostBack)
+            {
+                ddlBoardCategory.Items.Add("자유게시판");
+                ddlBoardCategory.Items.Add("공지사항");
+            }
+            /*
             if (!IsPostBack)
             {
                 ddlBoardCategory.Items.Add("자유게시판");
@@ -36,6 +49,7 @@ namespace WebApplication1.Page_Basic
                 else
                     btnWrite.Text = "확인";
             }
+            */
         }
 
         protected void btnWrite_Click(object sender, EventArgs e)
