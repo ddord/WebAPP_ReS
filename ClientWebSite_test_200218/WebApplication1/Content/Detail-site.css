@@ -160,6 +160,10 @@
     font-weight: bold;
 }
 
+.error_label {
+  color: #a94442;
+}
+
 .Title_14px{
     font-size: 14px
 }

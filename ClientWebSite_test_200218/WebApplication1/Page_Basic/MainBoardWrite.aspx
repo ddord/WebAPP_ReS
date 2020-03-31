@@ -5,18 +5,40 @@
     
     <script type="text/javascript">                
         $(document).ready(function () {
-            jQuery(function () {
-                // You can specify some validation options here but not rules and messages
-                jQuery('#inbox').validate();
-                // Add a custom class to your name mangled input and add rules like this
-                jQuery('#txbBoardTitle').rules('add', {
-                    required: true,
-                    messages: {
-                        required: 'Some custom message for the username required field'
-                    }
-                });
-            });
-        });         
+        }); 
+
+        function validateMessage() {
+            var titleValue, contentValue, titleRule, contentRule;
+            var return_bool = false, fieldValidCount = 0;
+
+            titleValue = $("input[id$='txbBoardTitle']").val();
+            contentValue = $("input[id$='txbBoardContent']").val();
+            titleRule = /[\w가-힣\s!@#$%^*()\-_=+\\\|\[\]{};:\'",.<>\/?]{1,50}$/;
+            contentRule = /[\w가-힣\s!@#$%^*()\-_=+\\\|\[\]{};:\'",.<>\/?]{1,300}$/;
+
+            if (titleValue == "") {
+                $("#titleValiMessage").text("제목을 적어주세요.");
+            }
+            else if (titleRule.test(titleValue)) {
+                $("#titleValiMessage").text("작성한 내용을 확인해주세요. (특수문자, 한문 등)");
+            }
+            else
+                fieldValidCount += 1;
+
+            if (contentValue == "") {
+                $("#contentValiMessage").text("내용을 적어주세요.");
+            }
+            else if (contentRule.test(contentValue)) {
+                $("#contentValiMessage").text("작성한 내용을 확인해주세요. (특수문자, 한문 등)");
+            }
+            else
+                fieldValidCount += 1;
+
+            if (fieldValidCount == 2)
+                return_bool = true;
+
+            return return_bool;
+        }
     </script>  
 
     <div class="panel-body" id="inbox">
@@ -36,6 +58,7 @@
                 </div>
                 <div class="col-xs-11">
                     <asp:TextBox ID="txbBoardTitle" runat="server" Width="450px" CausesValidation="True"></asp:TextBox>
+                    <div id ="titleValiMessage" class="error_label"></div>
                 </div>
             </li>
             <li>
@@ -43,12 +66,14 @@
                     <asp:Label ID="lblBoardWrite3" runat="server" Text="내용" CssClass="width-8 label_title"></asp:Label>
                 </div>
                 <div class="col-xs-11"> 
-                    <asp:TextBox ID="txbBoardContent" runat="server" Width="740px" Height="500px" TextMode="MultiLine" CausesValidation="True"></asp:TextBox>                    
+                    <asp:TextBox ID="txbBoardContent" runat="server" Width="740px" Height="500px" TextMode="MultiLine"></asp:TextBox> 
+                    <div id ="contentValiMessage" class="error_label"></div>
                 </div>
+                
             </li>
             <li>
                 <div> 
-                    <asp:Button ID="btnWrite" runat="server" Text="확인" CssClass="btn btn-default b" OnClick="btnWrite_Click" />                   
+                    <asp:Button ID="btnWrite" runat="server" Text="확인" CssClass="btn btn-default b" OnClick="btnWrite_Click" OnClientClick ="return validateMessage();" />                   
                 </div>
             </li>
         </ul>
