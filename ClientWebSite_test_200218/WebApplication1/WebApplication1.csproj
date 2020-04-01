@@ -135,6 +135,7 @@
     <Content Include="Page_Basic\MainBoard.aspx" />
     <Content Include="Page_Basic\MainBoardView.aspx" />
     <Content Include="Page_Basic\MainBoardWrite.aspx" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Service\BoardCommon.asmx" />
     <Content Include="Service\Method_Basic.asmx" />
     <Content Include="Page_Basic\NormalSignUp.aspx" />
