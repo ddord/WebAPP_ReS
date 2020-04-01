@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="LogoOne.master.cs" Inherits="WebApplication1.LogoOne" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="~/MasterPage/LogoOne.Master.cs" Inherits="WebApplication1.LogoOne" %>
 
 <!DOCTYPE html>
 

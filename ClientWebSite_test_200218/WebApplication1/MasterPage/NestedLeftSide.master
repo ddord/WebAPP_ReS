@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" MasterPageFile="~/MainPage.Master" AutoEventWireup="true" CodeBehind="NestedLeftSide.master.cs" Inherits="WebApplication1.NestedLeftSide" %>
+﻿<%@ Master Language="C#" MasterPageFile="~/MasterPage/MainPage.Master" AutoEventWireup="true" CodeBehind="NestedLeftSide.master.cs" Inherits="WebApplication1.NestedLeftSide" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <script type="text/javascript">

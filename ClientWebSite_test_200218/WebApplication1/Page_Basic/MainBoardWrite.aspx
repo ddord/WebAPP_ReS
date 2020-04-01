@@ -1,8 +1,8 @@
-﻿<%@ Page Title="메인 게시판 작성" Language="C#" MasterPageFile="~/NestedLeftSide.master" AutoEventWireup="true" CodeBehind="MainBoardWrite.aspx.cs" Inherits="WebApplication1.Page_Basic.MainBoardWrite" %>
+﻿<%@ Page Title="메인 게시판 작성" Language="C#" MasterPageFile="~/MasterPage/NestedLeftSide.master" AutoEventWireup="true" CodeBehind="MainBoardWrite.aspx.cs" Inherits="WebApplication1.Page_Basic.MainBoardWrite" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContentSub" runat="server">
     <link rel="stylesheet" href="../Content/kendo.default-v2.min.css" />
     
-    <script src="/Scripts/jquery-3.3.1.min.js"></script>
+    <%-- <script src="/Scripts/jquery-3.3.1.min.js"></script>--%>
     <script src="../Scripts/kendo.all.min.js"></script>
 
     <script>                
@@ -15,7 +15,7 @@
             }});
         });
         
-        function boardWrite() {
+        $("#btnWrite").click(function boardWrite() {
             var titleValue, contentValue, titleRule, contentRule;
             var fieldValidCount = 0;
 
@@ -35,38 +35,38 @@
                 alert("내용을 적어주세요.");
             else if (!contentRule.test(contentValue))
                 alert("작성한 내용을 확인해주세요. (특수문자, 한문 등)");
-            else 
+            else
                 fieldValidCount += 1;
-            
+
             if (fieldValidCount == 2)
                 var insertValue = {
                     userId: userID,
                     userName: userName,
                     category: $("select[id$='ddlBoardCategory']").val(),
                     mainBoardTitle: titleValue,
-                    mainBoardContent: contentValue,                   
-                    statementType: ($("#btnWrite").text() == "등록") ? "Insert": "Update"
+                    mainBoardContent: contentValue,
+                    statementType: ($("#btnWrite").text() == "등록") ? "Insert" : "Update"
                 }
 
-                $.ajax({
-                    type: "POST",
-                    url: "../Service/BoardCommon.asmx/InsertUpdateBoardWrite",
-                    data: JSON.stringify(insertValue),
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json",
-                    success: function (data) {
-                        if (data.d > 0) {
-                            alert("작성완료");
-                            location.href = "/Page_Basic/MainBoardView.aspx?iNum=" + data.d;
-                        } else {
-                            alert("작성실패");
-                        }
-                    },
-                    error: function (request, status, error) {
-                        alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+            $.ajax({
+                type: "POST",
+                url: "../Service/BoardCommon.asmx/InsertUpdateBoardWrite",
+                data: JSON.stringify(insertValue),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    if (data.d > 0) {
+                        alert("작성완료");
+                        location.href = "/Page_Basic/MainBoardView.aspx?iNum=" + data.d;
+                    } else {
+                        alert("작성실패");
                     }
-                });
-        }
+                },
+                error: function (request, status, error) {
+                    alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+                }
+            });
+        });
 
         <%--
         function validateMessage() {

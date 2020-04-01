@@ -12,6 +12,9 @@ namespace WebApplication1
         // 묶음에 대한 자세한 내용은 https://go.microsoft.com/fwlink/?LinkID=303951을 참조하세요.
         public static void RegisterBundles(BundleCollection bundles)
         {
+            bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
+                            "~/Scripts/jquery-3.3.1.min.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/WebFormsJs").Include(
                             "~/Scripts/WebForms/WebForms.js",
                             "~/Scripts/WebForms/WebUIValidation.js",

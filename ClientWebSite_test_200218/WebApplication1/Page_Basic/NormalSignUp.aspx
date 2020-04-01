@@ -1,4 +1,4 @@
-﻿<%@ Page Title="회원가입" Language="C#" MasterPageFile="~/LogoOne.Master" AutoEventWireup="true" CodeBehind="NormalSignUp.aspx.cs" Inherits="WebApplication1.Page_Basic.NomalSignUp" %>
+﻿<%@ Page Title="회원가입" Language="C#" MasterPageFile="~/MasterPage/LogoOne.Master" AutoEventWireup="true" CodeBehind="NormalSignUp.aspx.cs" Inherits="WebApplication1.Page_Basic.NomalSignUp" %>
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">    

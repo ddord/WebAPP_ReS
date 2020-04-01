@@ -1,7 +1,7 @@
-﻿<%@ Page Title="메인 게시판" Language="C#" MasterPageFile="~/NestedLeftSide.Master" AutoEventWireup="true" CodeBehind="MainBoard.aspx.cs" Inherits="WebApplication1.Page_Basic.MainBoard" %>
+﻿<%@ Page Title="메인 게시판" Language="C#" MasterPageFile="~/MasterPage/NestedLeftSide.master" AutoEventWireup="true" CodeBehind="MainBoard.aspx.cs" Inherits="WebApplication1.Page_Basic.MainBoard" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentSub" runat="server">
-    <script src="/Scripts/jquery-3.3.1.min.js"></script> 
+    <%-- <script src="/Scripts/jquery-3.3.1.min.js"></script> --%>
     
     <div class="panel-body">
         <div class="h6">

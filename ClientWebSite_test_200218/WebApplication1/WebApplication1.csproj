@@ -131,7 +131,7 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="MainPage.Master" />
+    <Content Include="MasterPage\MainPage.Master" />
     <Content Include="Page_Basic\MainBoard.aspx" />
     <Content Include="Page_Basic\MainBoardView.aspx" />
     <Content Include="Page_Basic\MainBoardWrite.aspx" />
@@ -141,8 +141,8 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Bundle.config" />
-    <Content Include="LogoOne.Master" />
-    <Content Include="NestedLeftSide.master" />
+    <Content Include="MasterPage\LogoOne.Master" />
+    <Content Include="MasterPage\NestedLeftSide.master" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -180,11 +180,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="LogoOne.Master.cs">
+    <Compile Include="MasterPage\LogoOne.Master.cs">
       <DependentUpon>LogoOne.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="LogoOne.Master.designer.cs">
+    <Compile Include="MasterPage\LogoOne.Master.designer.cs">
       <DependentUpon>LogoOne.Master</DependentUpon>
     </Compile>
     <Compile Include="Main.aspx.cs">
@@ -194,18 +194,18 @@
     <Compile Include="Main.aspx.designer.cs">
       <DependentUpon>Main.aspx</DependentUpon>
     </Compile>
-    <Compile Include="MainPage.Master.cs">
+    <Compile Include="MasterPage\MainPage.Master.cs">
       <DependentUpon>MainPage.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="MainPage.Master.designer.cs">
+    <Compile Include="MasterPage\MainPage.Master.designer.cs">
       <DependentUpon>MainPage.Master</DependentUpon>
     </Compile>
-    <Compile Include="NestedLeftSide.master.cs">
+    <Compile Include="MasterPage\NestedLeftSide.master.cs">
       <DependentUpon>NestedLeftSide.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="NestedLeftSide.master.designer.cs">
+    <Compile Include="MasterPage\NestedLeftSide.master.designer.cs">
       <DependentUpon>NestedLeftSide.master</DependentUpon>
     </Compile>
     <Compile Include="Page_Basic\LoginMain.aspx.cs">
