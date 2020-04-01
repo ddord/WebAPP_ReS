@@ -21,7 +21,6 @@
                                 <td class="">
                                     <asp:Label ID="lblBoardTilte" runat="server" Text="board_Title" CssClass="Title_14px b"></asp:Label>
                                 </td>
-                                <td></td>
                             </tr>
                         </tbody>
                     </table>
@@ -30,7 +29,6 @@
                     <table>
                         <tbody>
                             <tr style="vertical-align:top;">
-                                <td></td>
                                 <td class="">
                                     <asp:Label ID="lblBoardDate" runat="server" Text="board_Date" CssClass="text-right date_11px"></asp:Label>
                                 </td>

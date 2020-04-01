@@ -5,14 +5,14 @@
     <script src="/Scripts/jquery-3.3.1.min.js"></script>
     <script src="../Scripts/kendo.all.min.js"></script>
 
-    <script type="text/javascript">                
+    <script>                
         $(document).ready(function () {
             userID = '<%= UserId %>';
             userName = '<%= UserName %>';
             $("#editor").kendoEditor({ resizable: {
                         content: true,
                         toolbar: true
-                    }});
+            }});
         });
         
         function boardWrite() {
@@ -21,8 +21,8 @@
 
             titleValue = $("input[id$='txbBoardTitle']").val().trim();
             contentValue = $("#editor").val().trim();
-            titleRule = /^[\w가-힣ㄱ-ㅎㅏ-ㅣ\s!@#$%^*()\-_=+\\\|\[\]{};:\'",.<>\/?]{1,50}$/;
-            contentRule = /^[\w가-힣ㄱ-ㅎㅏ-ㅣ\s!@#$%^*()\-_=+\\\|\[\]{};:\'",.<>\/?]{1,300}$/;
+            titleRule = /^[\w가-힣ㄱ-ㅎㅏ-ㅣ\s~!@#$%^&*()\-_=+\\\|\[\]{};:\'",.<>\/?]{1,50}$/;
+            contentRule = /^[\w가-힣ㄱ-ㅎㅏ-ㅣ\s~!@#$%^&*()\-_=+\\\|\[\]{};:\'",.<>\/?]{1,300}$/;
 
             if (titleValue == "")
                 alert("제목을 적어주세요.");
@@ -37,19 +37,20 @@
                 alert("작성한 내용을 확인해주세요. (특수문자, 한문 등)");
             else 
                 fieldValidCount += 1;
-
+            
             if (fieldValidCount == 2)
                 var insertValue = {
                     userId: userID,
                     userName: userName,
-                    category: $("#ddlBoardCategory").val(),
+                    category: $("select[id$='ddlBoardCategory']").val(),
                     mainBoardTitle: titleValue,
-                    mainBoardContent: contentValue
+                    mainBoardContent: contentValue,                   
+                    statementType: ($("#btnWrite").text() == "등록") ? "Insert": "Update"
                 }
 
                 $.ajax({
                     type: "POST",
-                    url: "../Service/BoardCommon.asmx/InsertBoardWrite",
+                    url: "../Service/BoardCommon.asmx/InsertUpdateBoardWrite",
                     data: JSON.stringify(insertValue),
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
@@ -65,7 +66,6 @@
                         alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
                     }
                 });
-
         }
 
         <%--
@@ -132,7 +132,7 @@
             <li>
                 <div> 
                     <button ID="btnWrite" class="btn btn-default b" OnClick="boardWrite()">등록</button>
-                    <%-- <asp:Button ID="btnWrite" runat="server" Text="확인" CssClass="btn btn-default b" OnClick="btnWrite_Click" OnClientClick ="return validateMessage();" /> --%>                   
+                     <%--<asp:Button ID="btnWrite" runat="server" Text="확인" CssClass="btn btn-default b" OnClick="btnWrite_Click" OnClientClick ="return validateMessage();" /> --%>                   
                 </div>
             </li>
         </ul>

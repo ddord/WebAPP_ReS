@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Script.Services;
 using System.Web.Services;
 
 namespace WebApplication1.Service
@@ -13,18 +14,19 @@ namespace WebApplication1.Service
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
     [System.ComponentModel.ToolboxItem(false)]
     // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
-    // [System.Web.Script.Services.ScriptService]
+    [System.Web.Script.Services.ScriptService]
     public class BoardCommon : System.Web.Services.WebService
     {
         protected BoardBehavior boardBehavior = new BoardBehavior();
 
-        [WebMethod]
-        public bool InsertBoardWrite(string userId, string userName, string category, string mainBoardTitle, string mainBoardContent)
+        [WebMethod(EnableSession = true)]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public int InsertUpdateBoardWrite(string userId, string userName, string category, string mainBoardTitle, string mainBoardContent, string statementType)
         {
-            boardBehavior.insertBoardWrite(userId, userName, category, mainBoardTitle, mainBoardContent, DateTime.Now);
+            int result = -1;
+            result =  boardBehavior.insertUpdateBoardWrite(userId, userName, category, mainBoardTitle, mainBoardContent, DateTime.Now, statementType);
 
-
-            return true;
+            return result;
         }
     }
 }
