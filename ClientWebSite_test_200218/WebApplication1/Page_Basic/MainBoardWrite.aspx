@@ -9,13 +9,12 @@
         $(document).ready(function () {
             userID = '<%= UserId %>';
             userName = '<%= UserName %>';
-            $("#editor").kendoEditor({ resizable: {
-                        content: true,
-                        toolbar: true
-            }});
+
+            editorSetting("editor");
+            
         });
         
-        $("#btnWrite").click(function boardWrite() {
+        function boardWrite() {
             var titleValue, contentValue, titleRule, contentRule;
             var fieldValidCount = 0;
 
@@ -47,7 +46,7 @@
                     mainBoardContent: contentValue,
                     statementType: ($("#btnWrite").text() == "등록") ? "Insert" : "Update"
                 }
-
+            debugger;
             $.ajax({
                 type: "POST",
                 url: "../Service/BoardCommon.asmx/InsertUpdateBoardWrite",
@@ -55,6 +54,7 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (data) {
+                    console.log("aaaaaa");
                     if (data.d > 0) {
                         alert("작성완료");
                         location.href = "/Page_Basic/MainBoardView.aspx?iNum=" + data.d;
@@ -66,7 +66,7 @@
                     alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
                 }
             });
-        });
+        }
 
         <%--
         function validateMessage() {
@@ -131,7 +131,7 @@
             </li>
             <li>
                 <div> 
-                    <button ID="btnWrite" class="btn btn-default b" OnClick="boardWrite()">등록</button>
+                    <button ID="btnWrite" type="button" class="btn btn-default b" OnClick="boardWrite()">등록</button>
                      <%--<asp:Button ID="btnWrite" runat="server" Text="확인" CssClass="btn btn-default b" OnClick="btnWrite_Click" OnClientClick ="return validateMessage();" /> --%>                   
                 </div>
             </li>
