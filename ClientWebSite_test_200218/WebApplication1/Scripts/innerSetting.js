@@ -1,4 +1,5 @@
 ﻿
+var editor = null;
 
 function editorSetting(elemID) {
     $("#" + elemID).kendoEditor({

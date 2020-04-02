@@ -105,7 +105,11 @@ namespace WebApplication1.Page_Basic
             if (Request.IsAuthenticated)
             {
                 LinkButton link = sender as LinkButton;
-                Session["Arg"] = link.CommandArgument.ToString();
+                string temp_Arg = link.CommandArgument.ToString();
+                string[] temp_List = temp_Arg.Split('/');
+                
+                Session["category"] = temp_List[0].Trim();
+                Session["boardNo"] = temp_List[1].Trim();
                 Response.Redirect("MainBoardView.aspx");
             }
             else

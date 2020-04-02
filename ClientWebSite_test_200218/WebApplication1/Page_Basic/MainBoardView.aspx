@@ -1,5 +1,26 @@
 ﻿<%@ Page Title="메인 게시판 조회" Language="C#" MasterPageFile="~/MasterPage/NestedLeftSide.master" AutoEventWireup="true" CodeBehind="MainBoardView.aspx.cs" Inherits="WebApplication1.Page_Basic.MainBoardView" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContentSub" runat="server">
+    <script>
+        $(document).ready(function () {
+            userID = '<%=Session["userID"]%>';
+            category = '<%=Session["category"]%>';
+            boardNo = '<%=Session["boardNo"]%>';
+
+            editorSetting("txaBoardContent");
+            getBoardView();
+        });
+       
+        function getBoardView() {
+            editor = $("#txaBoardContent").data("kendoEditor");
+            $(editor.body).attr('contenteditable', false);
+            var test = "";
+        }
+
+    </script>
+
+    
+    
+    
     <div class="panel-body" id="inbox">
         <div class="h6 text-right">   
             <span class="margin_LR_5">
@@ -37,7 +58,6 @@
                     </table>
                 </div>
             </div>
-            <hr />
             <div class="">
                 <table>
                     <tbody>
@@ -51,7 +71,8 @@
             </div>
             <div class="h3"></div>
             <div class="" id="board_Content">
-                <asp:Label ID="lblBoardContent" runat="server" Text="board_Content" CssClass=""></asp:Label>
+                <textarea id="txaBoardContent" readonly="readonly" >테스트</textarea>
+                <%-- <asp:Label ID="lblBoardContent" runat="server" Text="board_Content" CssClass=""></asp:Label>--%>
             </div>
         </div>
     </div>

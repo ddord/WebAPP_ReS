@@ -13,31 +13,28 @@ namespace WebApplication1.Page_Basic
 {
     public partial class MainBoardView : System.Web.UI.Page
     {
-        DataRow dataRow;
+        protected DataRow dataRow;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
-            {
-                string temp_Arg = Session["Arg"].ToString();
-                string[] temp_List = temp_Arg.Split('/');
-
-                DataTable dt = boardRead(temp_List[0].Trim(), temp_List[1].Trim());
+            {/*
+                DataTable dt = boardRead(Session["category"].ToString().Trim(), Session["boardNo"].ToString().Trim());
                 dataRow = dt.Rows[0];
-                Session["mainBoardNo"] = temp_List[1].Trim();
+
                 lblBoardTilte.Text = dataRow["mainBoardTitle"].ToString();
                 lblBoardDate.Text = String.Format("{0:yyyy.MM.dd. hh:mm}", dataRow["writeDate"]);
                 lblBoardNickName.Text = dataRow["id_Name"].ToString();
                 lblUserId.Text = "(" + String.Format("{0}****", dataRow["userID"].ToString().Substring(0, 3)) + ")";
                 string dsd = dataRow["mainBoardContent"].ToString();
                 string www = dsd.Replace("\r\n", "<br />");
-                lblBoardContent.Text = www;
+                //lblBoardContent.Text = www;
 
                 if (Request.IsAuthenticated && (dataRow["userID"].ToString() == Session["userID"].ToString()))
                 {
                     btnBoardModify.Visible = true;
                     btnBoardDelete.Visible = true;
-                }
+                }*/
             }
         }
 

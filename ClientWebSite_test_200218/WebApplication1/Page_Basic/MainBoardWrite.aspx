@@ -1,9 +1,8 @@
 ﻿<%@ Page Title="메인 게시판 작성" Language="C#" MasterPageFile="~/MasterPage/NestedLeftSide.master" AutoEventWireup="true" CodeBehind="MainBoardWrite.aspx.cs" Inherits="WebApplication1.Page_Basic.MainBoardWrite" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContentSub" runat="server">
-    <link rel="stylesheet" href="../Content/kendo.default-v2.min.css" />
-    
+
     <%-- <script src="/Scripts/jquery-3.3.1.min.js"></script>--%>
-    <script src="../Scripts/kendo.all.min.js"></script>
+
 
     <script>                
         $(document).ready(function () {
