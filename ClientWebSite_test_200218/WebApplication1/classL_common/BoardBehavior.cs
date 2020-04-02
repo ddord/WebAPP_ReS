@@ -41,7 +41,8 @@ namespace WebApplication1
                     sqlComm.Parameters.Add("@StatementType", SqlDbType.NVarChar).Value = statementType;
                     sqlComm.CommandType = CommandType.StoredProcedure;
                     sqlConn.Open();
-                    result = sqlComm.ExecuteNonQuery();
+                    int test = sqlComm.ExecuteNonQuery();
+                    result = Convert.ToInt32(sqlComm.ExecuteScalar());
                 }                
             }
 

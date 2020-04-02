@@ -25,7 +25,7 @@ namespace WebApplication1.Service
         {
             int result = -1;
             result =  boardBehavior.insertUpdateBoardWrite(userId, userName, category, mainBoardTitle, mainBoardContent, DateTime.Now, statementType);
-
+            Session["Arg"] = category + "/" + result.ToString();
             return result;
         }
     }

@@ -37,7 +37,8 @@
             else
                 fieldValidCount += 1;
 
-            if (fieldValidCount == 2)
+            if (fieldValidCount == 2) {
+
                 var insertValue = {
                     userId: userID,
                     userName: userName,
@@ -46,26 +47,27 @@
                     mainBoardContent: contentValue,
                     statementType: ($("#btnWrite").text() == "등록") ? "Insert" : "Update"
                 }
-            debugger;
-            $.ajax({
-                type: "POST",
-                url: "../Service/BoardCommon.asmx/InsertUpdateBoardWrite",
-                data: JSON.stringify(insertValue),
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function (data) {
-                    console.log("aaaaaa");
-                    if (data.d > 0) {
-                        alert("작성완료");
-                        location.href = "/Page_Basic/MainBoardView.aspx?iNum=" + data.d;
-                    } else {
-                        alert("작성실패");
+
+                $.ajax({
+                    type: "POST",
+                    url: "../Service/BoardCommon.asmx/InsertUpdateBoardWrite",
+                    data: JSON.stringify(insertValue),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        if (data.d > 0) {
+                            alert("작성완료");                            
+                            location.href = "/Page_Basic/MainBoardView.aspx?iNum=" + data.d;
+                        } else {
+                            alert("작성실패");
+                        }
+                    },
+                    error: function (request, status, error) {
+                        alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
                     }
-                },
-                error: function (request, status, error) {
-                    alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
-                }
-            });
+                });
+            }
+
         }
 
         <%--
