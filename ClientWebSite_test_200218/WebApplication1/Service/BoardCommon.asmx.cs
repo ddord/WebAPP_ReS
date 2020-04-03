@@ -32,5 +32,19 @@ namespace WebApplication1.Service
             }
             return result;
         }
+
+        [WebMethod(EnableSession = true)]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string SelectBoardView(string userId, string category, string boardNo, string statementType)
+        {
+            int result = -1;
+            result = boardBehavior.SelectBoardView(userId, category, boardNo, statementType);
+            if (result > 0)
+            {
+                Session["category"] = category;
+                Session["boardNo"] = result.ToString();
+            }
+            return result;
+        }
     }
 }

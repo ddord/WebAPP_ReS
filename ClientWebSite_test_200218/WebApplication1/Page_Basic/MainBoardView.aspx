@@ -7,15 +7,50 @@
             boardNo = '<%=Session["boardNo"]%>';
 
             editorSetting("txaBoardContent");
-            getBoardView();
+            BoardViewSetting();
+            getBoardViewValue();
         });
        
-        function getBoardView() {
+        function BoardViewSetting() {
             editor = $("#txaBoardContent").data("kendoEditor");
             $(editor.body).attr('contenteditable', false);
-            var test = "";
+            $('.k-editor-toolbar').hide();
         }
+       
+        function getBoardViewValue() {
+            var userInfo = {
+                userId: userID,
+                category: category,
+                boardNo: boardNo,
+                statementType: "Select"
+            }
 
+            $.ajax({
+                type: "POST",
+                url: "../Service/BoardCommon.asmx/SelectBoardView",
+                data: userInfo,
+                dataType: "json",
+                success: function (data, status, jqXhr) {
+                    if (data.d[6] == "다시 확인 해주시기 바랍니다.") {
+                        $("#loadtext").html(data.d[0]); //해당 내용을 보여준다
+                        $("#loadname").html(data.d[1]); //해당 내용을 보여준다
+                        $("#loadpwd").html(data.d[2]); //해당 내용을 보여준다
+                        $("#loadpwdRe").html(data.d[3]); //해당 내용을 보여준다
+                        $("#loadaddr").html(data.d[4]); //해당 내용을 보여준다
+                        $("#loadEmail").html(data.d[5]); //해당 내용을 보여준다
+                        alert(data.d[6]);
+                    }
+                    else {
+                        alert(data.d[6]);
+                        location.href = "/Page_Basic/LoginMain.aspx";
+                    }
+                },
+                error: function (request, status, error) {
+                    alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+                }
+            });
+
+        }
     </script>
 
     

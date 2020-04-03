@@ -8,6 +8,7 @@ namespace WebModel
 {
     public class BoardUserInfo
     {
+        public string boardNo { get; set; }
         public string userID { get; set; }
         public string userName { get; set; }
         public string category { get; set; }

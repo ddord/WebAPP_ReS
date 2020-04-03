@@ -29,12 +29,12 @@ namespace WebApplication1.Page_Basic
                 string dsd = dataRow["mainBoardContent"].ToString();
                 string www = dsd.Replace("\r\n", "<br />");
                 //lblBoardContent.Text = www;
-
+                */
                 if (Request.IsAuthenticated && (dataRow["userID"].ToString() == Session["userID"].ToString()))
                 {
                     btnBoardModify.Visible = true;
                     btnBoardDelete.Visible = true;
-                }*/
+                }
             }
         }
 
