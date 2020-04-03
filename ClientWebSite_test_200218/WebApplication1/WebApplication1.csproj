@@ -93,6 +93,8 @@
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.5.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -180,6 +182,16 @@
     <Content Include="Scripts\WebForms\WebForms.js" />
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
+    <Content Include="UserDataModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>UserDataModel.edmx</DependentUpon>
+      <LastGenOutput>UserDataModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="UserDataModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>UserDataModel.edmx</DependentUpon>
+      <LastGenOutput>UserDataModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -189,6 +201,9 @@
     <Compile Include="classL_common\DataBase.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="mainBoard.cs">
+      <DependentUpon>UserDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="MasterPage\LogoOne.Master.cs">
       <DependentUpon>LogoOne.Master</DependentUpon>
@@ -260,11 +275,39 @@
       <DependentUpon>NormalSignUp.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>UserDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserDataModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserDataModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserDataModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserDataModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserDataModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="UserInfor.cs">
+      <DependentUpon>UserDataModel.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
+    <EntityDeploy Include="UserDataModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>UserDataModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="UserDataModel.edmx.diagram">
+      <DependentUpon>UserDataModel.edmx</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -282,6 +325,7 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WebModel\WebModel.csproj">
