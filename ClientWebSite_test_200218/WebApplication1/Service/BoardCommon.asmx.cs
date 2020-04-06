@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Script.Services;
@@ -37,14 +39,13 @@ namespace WebApplication1.Service
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string SelectBoardView(string userId, string category, string boardNo, string statementType)
         {
-            int result = -1;
-            result = boardBehavior.SelectBoardView(userId, category, boardNo, statementType);
-            if (result > 0)
-            {
-                Session["category"] = category;
-                Session["boardNo"] = result.ToString();
-            }
-            return result;
+            DataTable dt = new DataTable();
+            dt = boardBehavior.SelectBoardView(userId, category, boardNo, statementType);
+
+            if (dt != null)
+                return JsonConvert.SerializeObject(dt);
+            else
+                return "[]";
         }
     }
 }

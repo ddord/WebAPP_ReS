@@ -49,11 +49,10 @@ namespace WebApplication1
             return result;
         }
 
-        public string SelectBoardView(string userId, string category, string boardNo, string statementType)
+        public DataTable SelectBoardView(string userId, string category, string boardNo, string statementType)
         {
-            int result = -1;
-
             BoardUserInfo boardUserInfo = new BoardUserInfo();
+            DataSet result = new DataSet();
 
             boardUserInfo.userID = userId;
             boardUserInfo.category = category;
@@ -64,29 +63,24 @@ namespace WebApplication1
                 string spName = "sp_MainBoard_CRUD";
                 using (SqlCommand sqlComm = new SqlCommand(spName, sqlConn))
                 {
-                    sqlComm.Parameters.Add("@mainBoardNo", SqlDbType.NVarChar).Value = 0;
-                    sqlComm.Parameters.Add("@userID", SqlDbType.NVarChar).Value = userId;
-                    sqlComm.Parameters.Add("@id_Name", SqlDbType.NVarChar).Value = userName;
-                    sqlComm.Parameters.Add("@category", SqlDbType.NVarChar).Value = category;
-                    sqlComm.Parameters.Add("@mainBoardTitle", SqlDbType.NVarChar).Value = mainBoardTitle;
-                    sqlComm.Parameters.Add("@mainBoardContent", SqlDbType.NVarChar).Value = mainBoardContent;
-                    sqlComm.Parameters.Add("@writeDate", SqlDbType.DateTime).Value = nowDate;
-                    sqlComm.Parameters.Add("@StatementType", SqlDbType.NVarChar).Value = statementType;
-                    sqlComm.CommandType = CommandType.StoredProcedure;
-                    sqlConn.Open();
-                    int test = sqlComm.ExecuteNonQuery();
-                    result = Convert.ToInt32(sqlComm.ExecuteScalar());
+                    using (SqlDataAdapter sqlAdt = new SqlDataAdapter(sqlComm))
+                    {
+                        sqlComm.Parameters.Add("@mainBoardNo", SqlDbType.NVarChar).Value = boardNo;
+                        sqlComm.Parameters.Add("@userID", SqlDbType.NVarChar).Value = userId;
+                        sqlComm.Parameters.Add("@category", SqlDbType.NVarChar).Value = category;
+                        sqlComm.Parameters.Add("@StatementType", SqlDbType.NVarChar).Value = "ViewAricle";
+                        sqlComm.CommandType = CommandType.StoredProcedure;
+                        sqlConn.Open();
+
+                        sqlAdt.Fill(result);                        
+                    }
                 }
             }
 
-            return result;
-        }
-
-        private DataTable boardRead(string category, string number)
-        {
-            DataBase DB = new DataBase();
-            string query = String.Format("SELECT * FROM mainBoard WHERE category='{0}' AND mainBoardNo={1}", category, number);
-            return DB.ExecuteQueryDataTable(query);
+            if (result.Tables.Count >= 1)            
+                return result.Tables[0];            
+            else            
+                return null;            
         }
     }
 }
