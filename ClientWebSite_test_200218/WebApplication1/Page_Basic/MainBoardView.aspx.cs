@@ -18,7 +18,8 @@ namespace WebApplication1.Page_Basic
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
-            {/*
+            {
+                /*
                 DataTable dt = boardRead(Session["category"].ToString().Trim(), Session["boardNo"].ToString().Trim());
                 dataRow = dt.Rows[0];
 
@@ -31,12 +32,12 @@ namespace WebApplication1.Page_Basic
                 //lblBoardContent.Text = www;
 
                 //test date
-                */
+                
                 if (Request.IsAuthenticated && (dataRow["userID"].ToString() == Session["userID"].ToString()))
                 {
                     btnBoardModify.Visible = true;
                     btnBoardDelete.Visible = true;
-                }
+                }*/
             }
         }
 
