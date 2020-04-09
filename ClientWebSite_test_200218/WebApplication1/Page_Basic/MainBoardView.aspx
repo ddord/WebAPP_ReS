@@ -46,10 +46,7 @@
             });
 
         }
-    </script>
-
-    
-    
+    </script>        
     
     <div class="panel-body" id="inbox">
         <div class="h6 text-right">   
