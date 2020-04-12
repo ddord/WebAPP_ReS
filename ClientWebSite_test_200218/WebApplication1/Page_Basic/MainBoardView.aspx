@@ -31,9 +31,9 @@
                 data: userInfo,
                 dataType: "json",
                 success: function (data, status, jqXhr) {
-                    if (data.d[6] == "다시 확인 해주시기 바랍니다.") {
+                    if (data.d.length) {
 
-                        alert(data.d[6]);
+                        <% %>
                     }
                     else {
                         alert(data.d[6]);
