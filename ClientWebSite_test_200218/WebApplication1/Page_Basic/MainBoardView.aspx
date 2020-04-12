@@ -32,8 +32,6 @@
                 dataType: "json",
                 success: function (data, status, jqXhr) {
                     if (data.d.length) {
-
-                        <% %>
                     }
                     else {
                         alert(data.d[6]);
