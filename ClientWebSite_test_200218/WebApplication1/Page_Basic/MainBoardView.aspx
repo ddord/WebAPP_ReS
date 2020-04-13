@@ -6,12 +6,12 @@
             category = '<%=Session["category"]%>';
             boardNo = '<%=Session["boardNo"]%>';
 
-            editorSetting("txaBoardContent");
             BoardViewSetting();
             getBoardViewValue();
         });
        
         function BoardViewSetting() {
+            editorSetting("txaBoardContent");
             editor = $("#txaBoardContent").data("kendoEditor");
             $(editor.body).attr('contenteditable', false);
             $('.k-editor-toolbar').hide();
