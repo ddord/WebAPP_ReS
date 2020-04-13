@@ -68,7 +68,7 @@ namespace WebApplication1
                         sqlComm.Parameters.Add("@mainBoardNo", SqlDbType.NVarChar).Value = boardNo;
                         sqlComm.Parameters.Add("@userID", SqlDbType.NVarChar).Value = userId;
                         sqlComm.Parameters.Add("@category", SqlDbType.NVarChar).Value = category;
-                        sqlComm.Parameters.Add("@StatementType", SqlDbType.NVarChar).Value = "ViewAricle";
+                        sqlComm.Parameters.Add("@StatementType", SqlDbType.NVarChar).Value = statementType;
                         sqlComm.CommandType = CommandType.StoredProcedure;
                         sqlConn.Open();
 

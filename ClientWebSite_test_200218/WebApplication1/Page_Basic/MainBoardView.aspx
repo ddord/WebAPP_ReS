@@ -22,22 +22,27 @@
                 userId: userID,
                 category: category,
                 boardNo: boardNo,
-                statementType: "Select"
+                statementType: "ViewAricle"
             }
 
             $.ajax({
                 type: "POST",
                 url: "../Service/BoardCommon.asmx/SelectBoardView",
-                data: userInfo,
+                data: JSON.stringify(userInfo),
                 dataType: "json",
+                contentType: "application/json; charset=utf-8",
                 success: function (data, status, jqXhr) {
-                    if (data.d[6] == "다시 확인 해주시기 바랍니다.") {
-
-                        alert(data.d[6]);
+                    if (data.d.length > 0) {
+                        list = JSON.parse(data.d);
+                        $('#<%=lblBoardTilte.ClientID %>')[0].innerHTML = list[0].mainBoardTitle;
+                        $('#<%=lblBoardDate.ClientID %>')[0].innerHTML = list[0].writeDate.split('T')[0];
+                        $('#<%=lblBoardNickName.ClientID %>')[0].innerHTML = list[0].id_Name;
+                        $('#<%=lblUserId.ClientID %>')[0].innerHTML = "(" + list[0].userID.substring(0, 3) + "****)";
+                        editor.value(list[0].mainBoardContent);
                     }
                     else {
-                        alert(data.d[6]);
-                        location.href = "/Page_Basic/LoginMain.aspx";
+                        alert("에러: 글을 불러오지 못했습니다.");
+                        location.href("../Page_Basic/MainBoard.aspx");
                     }
                 },
                 error: function (request, status, error) {
@@ -67,7 +72,7 @@
                         <tbody>
                             <tr style="vertical-align:top;">
                                 <td class="">
-                                    <asp:Label ID="lblBoardTilte" runat="server" Text="board_Title" CssClass="Title_14px b"></asp:Label>
+                                    <asp:Label ID="lblBoardTilte" runat="server" CssClass="Title_14px b"></asp:Label>
                                 </td>
                             </tr>
                         </tbody>
@@ -78,7 +83,7 @@
                         <tbody>
                             <tr style="vertical-align:top;">
                                 <td class="">
-                                    <asp:Label ID="lblBoardDate" runat="server" Text="board_Date" CssClass="text-right date_11px"></asp:Label>
+                                    <asp:Label ID="lblBoardDate" runat="server" CssClass="text-right date_11px"></asp:Label>
                                 </td>
                             </tr>
                         </tbody>
@@ -90,7 +95,7 @@
                     <tbody>
                         <tr>
                             <td class="" id="board_NickName">
-                                <asp:Label ID="lblBoardNickName" runat="server" Text="board_NickName" CssClass=""></asp:Label><asp:Label ID="lblUserId" runat="server" Text="lblUserId"></asp:Label>
+                                <asp:Label ID="lblBoardNickName" runat="server" CssClass=""></asp:Label><asp:Label ID="lblUserId" runat="server"></asp:Label>
                             </td>
                         </tr>
                     </tbody>
@@ -98,7 +103,7 @@
             </div>
             <div class="h3"></div>
             <div class="" id="board_Content">
-                <textarea id="txaBoardContent" readonly="readonly" >테스트</textarea>
+                <textarea id="txaBoardContent" readonly="readonly" ></textarea>
                 <%-- <asp:Label ID="lblBoardContent" runat="server" Text="board_Content" CssClass=""></asp:Label>--%>
             </div>
         </div>
