@@ -64,37 +64,6 @@
             }
 
         }
-
-        <%--
-        function validateMessage() {
-            var titleValue, contentValue, titleRule, contentRule;
-            var return_bool = false, fieldValidCount = 0;
-
-            titleValue = $("input[id$='txbBoardTitle']").val().trim();
-            contentValue = $("#editor").val().trim();
-            titleRule = /^[\w가-힣ㄱ-ㅎㅏ-ㅣ\s!@#$%^*()\-_=+\\\|\[\]{};:\'",.<>\/?]{1,50}$/;
-            contentRule = /^[\w가-힣ㄱ-ㅎㅏ-ㅣ\s!@#$%^*()\-_=+\\\|\[\]{};:\'",.<>\/?]{1,300}$/;
-
-            if (titleValue == "")
-                alert("제목을 적어주세요.");
-            else if (!titleRule.test(titleValue))
-                alert("작성한 제목을 확인해주세요. (특수문자, 한문 등)");
-            else
-                fieldValidCount += 1;
-
-            if (contentValue == "")
-                alert("내용을 적어주세요.");
-            else if (!contentRule.test(contentValue))
-                alert("작성한 내용을 확인해주세요. (특수문자, 한문 등)");
-            else 
-                fieldValidCount += 1;
-
-            if (fieldValidCount == 2)
-                return_bool = true;
-
-            return return_bool;
-        }
-        --%>
     </script>  
 
     <div class="panel-body" id="inbox">
