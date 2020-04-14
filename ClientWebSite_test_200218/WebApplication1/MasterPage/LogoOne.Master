@@ -13,7 +13,7 @@
         <%: System.Web.Optimization.Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
 
-    <link rel="stylesheet" href="../Content/kendo.default-v2.min.css" />
+    <link rel="stylesheet" href="../Content/kendo.default.min.css" />
 
     <script src="../Scripts/jquery-3.3.1.min.js"></script>
     <script src="../Scripts/innerSetting.js"></script>        

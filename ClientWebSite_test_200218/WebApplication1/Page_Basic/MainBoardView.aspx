@@ -12,6 +12,7 @@
        
         function BoardViewSetting() {
             editorSetting("txaBoardContent");
+
             editor = $("#txaBoardContent").data("kendoEditor");
             $(editor.body).attr('contenteditable', false);
             $('.k-editor-toolbar').hide();
@@ -103,7 +104,7 @@
             </div>
             <div class="h3"></div>
             <div class="" id="board_Content">
-                <textarea id="txaBoardContent" readonly="readonly" ></textarea>
+                <textarea id="txaBoardContent" aria-label="editor" style="height:600px;"></textarea>
                 <%-- <asp:Label ID="lblBoardContent" runat="server" Text="board_Content" CssClass=""></asp:Label>--%>
             </div>
         </div>

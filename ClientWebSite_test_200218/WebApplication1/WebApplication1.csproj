@@ -126,6 +126,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Detail-site.css" />
     <Content Include="Content\kendo.default-v2.min.css" />
+    <Content Include="Content\kendo.default.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -145,6 +146,7 @@
     <Content Include="Page_Basic\MainBoardWrite.aspx" />
     <Content Include="Scripts\innerSetting.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\kendo.all.min.js" />
     <Content Include="Service\BoardCommon.asmx" />
     <Content Include="Service\Method_Basic.asmx" />
     <Content Include="Page_Basic\NormalSignUp.aspx" />
