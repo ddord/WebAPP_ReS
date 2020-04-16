@@ -14,8 +14,8 @@
             editorSetting("txaBoardContent", "");
 
             editor = $("#txaBoardContent").data("kendoEditor");
-            $(editor.body).attr('contenteditable', false);
-            $('.k-editor-toolbar').hide();
+            //$(editor.body).attr('contenteditable', false);
+            //$('.k-editor-toolbar').hide();
         }
        
         function getBoardViewValue() {
