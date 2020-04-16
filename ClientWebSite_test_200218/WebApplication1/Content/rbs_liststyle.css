@@ -1,0 +1,165 @@
+﻿@charset "UTF-8";
+
+/* font- face */
+
+
+@font-face {
+  font-family:'NotoSans-Regular';
+  src:url('../fonts/NotoSans-Regular.eot');
+  src:url('../fonts/NotoSans-Regular.eot?#iefix') format('embedded-opentype'), url('../fonts/NotoSans-Regular.woff2') format('woff2'),
+  url('../fonts/NotoSans-Regular.woff') format('woff'), url('../fonts/NotoSans-Regular.ttf') format('truetype');
+}
+
+
+
+body{ color: #444;
+	font-family: "NotoSans-Regular", "Malgun Gothic", sans-serif;
+	font-size:15px;
+	line-height:1.5;
+    letter-spacing: -0.05em;
+	}
+
+body, html { margin:0; padding:0; width: 100%; height: 100%;}
+
+img { vertical-align: middle; border:none;}
+p { margin:0px; padding:3px;}
+div, li { vertical-align: top;}
+li { list-style: none;}
+a { color:#444; text-decoration: none;}
+p { padding-bottom:10px;}
+
+.tab { margin:0px; padding:0px; border-bottom:1px solid #1d4592; margin-bottom:20px; }
+.tab li { display:inline-block; border-radius:5px 5px 0px 0px;  margin-right:5px; font-size:20px; color:#acb2b9; background:#eaeaea; padding:10px 30px; width:100px; text-align:center;  }
+
+.tab li a { display:block;}
+.tab li.on { background:#1d4592;  color:#fff; }
+.tab li.on a , .tab li:hover a{ color:#fff;}
+.tab li:hover { background:#1d4592; color:#fff; text-decoration: none; cursor:pointer;}
+
+
+#title { background:#000; padding:10px; }
+#contents { margin:20px;}
+
+
+.lst { width:100%; border-collapse: collapse; table-layout: fixed; word-break:break-all;}
+.lst th { padding:5px 10px; background:#2b69a4; color:#fff; height: 28px; line-height: 18px; }
+.lst td {  padding:10px; border-bottom:1px solid #ddd;  height: 28px; line-height: 1.5;}
+.lst td.center { text-align:center;}
+.lst tr:hover td { background:#e2fdff; cursor:pointer;}
+.lst td.faq { padding:20px 20px 20px 50px; background:#f7f7f7 url('../img/faq_a.png') 20px 20px no-repeat; }
+.lst td.faq a { color:blue;}
+
+.lstFAQ { width:100%; border-collapse: collapse; table-layout: fixed; word-break:break-all;}
+
+.lstFAQ td {  padding:10px 10px 10px 40px; border-bottom:1px solid #ddd;  height: 28px; line-height: 1.5; background: url('../img/faq_q.png') 10px 10px no-repeat;  }
+.lstFAQ td.faq { padding:20px 20px 20px 60px; background:#f7f7f7 url('../img/faq_a.png') 20px 20px no-repeat; }
+.lstFAQ td.faq a { color:blue;}
+.lstFAQ td span.plus { position:absolute; float:right; background:url('../img/faq_plus.png') 0 0 no-repeat; width:20px; height:20px; display:block; right:20px; top:20px;}
+.lstFAQ td span.minus { position:absolute; float:right; background:url('../img/faq_minus.png') 0 0 no-repeat; width:20px; height:20px; display:block; right:20px; top:20px;}
+
+
+.btn { margin-top:20px; float:right;}
+.btn button{ border-radius:5px; padding:5px 20px; display:inline-block; color:#fff;  margin-right:3px; cursor:pointer; border:1px solid #ccc; font-size:16px; font-weight:600; letter-spacing: -1px;}
+button.list { background:#989898;}
+
+input.txbModify,
+textarea.txbModify {
+    width: 100%;
+    height: 50px;
+    font-family: inherit;
+    font-size: inherit;
+    text-align: center;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    resize: none;
+}
+
+.ft_orange { color:orange;}
+.ft_blue { color:blue; }
+
+/* kendo */
+.k-editor-textarea {
+    overflow-y:auto !important;
+    width:1000px !important;
+    height:700px !important;
+}
+
+/*** 01.29 ADD ***/
+.tpmenu {  display:inline-block;}
+.tpmenu li { display:inline-block; margin-left:50px;}
+.tpmenu li a { color:#fff; font-size:18px;}
+.tpmenu li a:hover { color:#00fffc;}
+.tpmenu .current { color:#00fffc;}
+
+.tpuser { display:inline-block; color:#fff; vertical-align: middle; float:right; margin-right:10px; margin-top:20px; font-size:14px;}
+
+h1{ font-size:24px; border-bottom:1px solid #000; padding-bottom:10px; margin-bottom:30px;}
+
+.b_btn { border-radius: 3px; background:#1d4592; padding:5px 12px 8px 12px; color:#fff; font-size:14px; margin-right:3px;}
+.w_btn { border-radius: 3px; background:#fff; padding:3px 8px 5px 10px;  font-size:14px; margin-right:3px; margin-bottom:3px; border:1px solid #3f3f3f; white-space: nowrap;}
+.b_btn:hover { background:#000;}
+.w_btn:hover { background:#f2f2f2;}
+
+.logout_btn { background:#727272;border-radius: 3px; font-size:13px; padding:3px 8px; margin-left:20px; color:#fff;}
+
+.lstFAQ { margin-top:20px;}
+.lstFAQ td.faq_btn { text-align:right; background:none;}
+.lstFAQ td {border-top:1px solid #ddd;}
+.lstFAQ td.bgnone { background:none;}
+.lst { margin-top:10px;}
+
+.lang {font-size:18px; margin-right:10px;}
+.subject { border-top:1px solid #ddd; border-bottom:1px solid #ddd; padding:10px 0; font-weight:bold;}
+input { padding:5px; box-sizing: border-box; }
+.fm_subject { display:inline-block; font-size:17px; margin-left:10px; }
+
+/* login */
+#wrapper { width: 100%; height: 100%; background:#1d4592;  }
+
+.container {width: 100%; height: 100%; margin: 0 auto; }
+.outer {display: table; width: 100%; height: 100%; }
+.inner {display:table-cell; vertical-align: middle; text-align: center;}
+
+.login {position: relative; display: inline-block; width:400px; height:400px; text-align:center; }
+.login_box { border:1px solid #bcdfef; padding:20px; margin-top:10px;color:#fff;}
+.login_box ul { margin-top:30px;  padding:0px;}
+.login_box li { margin-bottom:20px;}
+.login_box li label { width:80px; display:inline-block;}
+.login_box li.login_btn { margin-left:95px;}
+.login_box li.login_btn a{ background:#007eff; display:block; width:230px; padding:10px; color:#fff;}
+.login_box li.login_btn a:hover { background:#000;}
+
+
+.space { padding-top:20px;}
+
+.file_attach { width:100%; margin-top:5px;border-collapse: collapse; border:2px solid #ddd;}
+.file_attach th { background:#fbfbfb; font-size:13px; padding:5px;}
+.file_attach td { padding:5px; }
+
+
+.error {
+    color: red;
+    text-align: center;
+    padding: 5px 0px;
+    background: #ffdddd;
+    font-size: 14px;
+}
+
+.popAddUserGroup {
+    padding: 40px 20px 20px 20px;
+    text-align: left;
+    font-size: 20px;
+}
+
+.addUserGroupSelect {
+    padding: 5px 10px;
+    height: 32px;
+    margin-right: 10px;
+}
+
+.popAddUserGroup li {
+    height: 40px;
+}

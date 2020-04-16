@@ -1,0 +1,102 @@
+﻿@charset "UTF-8";
+
+/* font- face */
+
+
+@font-face {
+  font-family:'NotoSans-Regular';
+  src:url('../fonts/NotoSans-Regular.eot');
+  src:url('../fonts/NotoSans-Regular.eot?#iefix') format('embedded-opentype'), url('../fonts/NotoSans-Regular.woff2') format('woff2'),
+  url('../fonts/NotoSans-Regular.woff') format('woff'), url('../fonts/NotoSans-Regular.ttf') format('truetype');
+}
+
+
+
+body{ color: #444;
+	font-family: "NotoSans-Regular", "Malgun Gothic", sans-serif;
+	font-size:15px;
+	line-height:1.5;
+    letter-spacing: -0.05em;
+	}
+
+body, html { margin:0; padding:0; width: 100%; height: 100%;}
+
+img { vertical-align: middle; border:none;}
+p { margin:0px; padding:3px;}
+
+
+
+
+div, li { vertical-align: top;}
+
+
+
+#title { background:#000; padding:20px; color:#fff; font-size:22px;}
+#contents { margin:20px;}
+
+.space { padding-top:10px;}
+.box { background:#d8f1f0; padding:10px; color:#2e8a9b;}
+.line { border:1px solid #d4d4d4; padding:10px;}
+
+h1 { font-size:20px; color:#fff; background:#1d4592; padding:15px 15px 15px 30px; font-weight: normal;}
+
+h1 a { color:#fff; text-decoration: none;}
+h1 a:hover { color:#fff; text-decoration: underline;}
+h2 { font-size:16px; font-weight:300;}
+
+.imp { color:#1d2392; padding:5px; background:#c8eaef;}
+.ft_imp { color:red; background:#ffffdd; padding:10px; font-size:18px;}
+.ft_red { color:red;}
+.ft_blue { color:blue;}
+
+li { font-size:18px; padding-bottom:20px; color:#000;}
+li img { display:inline-block;}
+
+.info { background:#f7f7f7; padding:10px; font-size:15px;}
+.stitle { margin-top:20px; font-size:18px; background:#00f0ff; color:#000; padding:10px;}
+
+
+#mfaSms {
+    border: 10px solid #000;
+    background-color:white;
+    min-width: 740px;
+}
+
+.popCon {
+    padding: 40px 20px 20px 20px;
+    text-align: center;
+    font-size: 20px;
+}
+
+.close {
+    float: right;
+    padding-right: 10px;
+    padding-top: 10px;
+}
+
+.install {
+    margin: 10px 0 0 0;
+    padding: 0;
+}
+
+    .install li {
+        list-style: none;
+        padding-bottom: 10px;
+    }
+
+.sms_txt {
+    border: 1px solid #8f8f8f;
+    padding: 5px 10px;
+    height: 20px;
+}
+
+.smsBtn {
+    width: 280px;
+    background: #1d4592;
+    color: #fff;
+    border: 1px solid #1d4592;
+    padding: 6px 70px 10px 70px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 16px;
+}

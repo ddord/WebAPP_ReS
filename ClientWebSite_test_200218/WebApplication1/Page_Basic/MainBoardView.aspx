@@ -14,8 +14,8 @@
             editorSetting("txaBoardContent");
 
             editor = $("#txaBoardContent").data("kendoEditor");
-            $(editor.body).attr('contenteditable', false);
-            $('.k-editor-toolbar').hide();
+            //$(editor.body).attr('contenteditable', false);
+            //$('.k-editor-toolbar').hide();
         }
        
         function getBoardViewValue() {
@@ -30,16 +30,16 @@
                 type: "POST",
                 url: "../Service/BoardCommon.asmx/SelectBoardView",
                 data: JSON.stringify(userInfo),
-                dataType: "json",
-                contentType: "application/json; charset=utf-8",
-                success: function (data, status, jqXhr) {
+                dataType: "json", 
+                contentType: "application/json; charset=utf-8",               
+                success: function (data) {
                     if (data.d.length > 0) {
-                        list = JSON.parse(data.d);
+                        var list = JSON.parse(data.d);
                         $('#lblBoardTitle').text(list[0].mainBoardTitle);
                         $('#lblBoardDate').text(list[0].writeDate.split('T')[0]);
                         $('#lblBoardNickName').text(list[0].id_Name);
                         $('#lblUserId').text("(" + list[0].userID.substring(0, 3) + "****)");
-                        editor.html(list[0].mainBoardContent);
+                        editor.value(list[0].mainBoardContent);
                     }
                     else {
                         alert("에러: 글을 불러오지 못했습니다.");
