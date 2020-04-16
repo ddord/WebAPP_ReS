@@ -35,11 +35,11 @@
                 success: function (data, status, jqXhr) {
                     if (data.d.length > 0) {
                         list = JSON.parse(data.d);
-                        $('#lblBoardTilte.ClientID')[0].innerHTML = list[0].mainBoardTitle;
-                        $('#lblBoardDate.ClientID')[0].innerHTML = list[0].writeDate.split('T')[0];
-                        $('#lblBoardNickName.ClientID')[0].innerHTML = list[0].id_Name;
-                        $('#lblUserId.ClientID')[0].innerHTML = "(" + list[0].userID.substring(0, 3) + "****)";
-                        editor.value(list[0].mainBoardContent);
+                        $('#lblBoardTitle').text(list[0].mainBoardTitle);
+                        $('#lblBoardDate').text(list[0].writeDate.split('T')[0]);
+                        $('#lblBoardNickName').text(list[0].id_Name);
+                        $('#lblUserId').text("(" + list[0].userID.substring(0, 3) + "****)");
+                        editor.html(list[0].mainBoardContent);
                     }
                     else {
                         alert("에러: 글을 불러오지 못했습니다.");
@@ -73,7 +73,7 @@
                         <tbody>
                             <tr style="vertical-align:top;">
                                 <td class="">
-                                    <span id="lblboardTitle" class ="Title_14px b">                                        
+                                    <span id="lblBoardTitle" class ="Title_14px b">                                        
                                     </span><%-- <asp:Label ID="lblBoardTilte" runat="server" CssClass="Title_14px b"></asp:Label>--%>
                                 </td>
                             </tr>
@@ -85,7 +85,7 @@
                         <tbody>
                             <tr style="vertical-align:top;">
                                 <td class="">
-                                    <span id="lblboardDate" class ="text-right date_11px">                                        
+                                    <span id="lblBoardDate" class ="text-right date_11px">                                        
                                     </span><%--<asp:Label ID="lblBoardDate" runat="server" CssClass="text-right date_11px"></asp:Label>--%>
                                 </td>
                             </tr>
@@ -98,7 +98,7 @@
                     <tbody>
                         <tr>
                             <td class="" id="board_NickName">
-                                <span id="lblboardNickName" class ="text-right date_11px">                                        
+                                <span id="lblBoardNickName" class ="text-right date_11px">                                        
                                 </span>
                                 <span id="lblUserId" class ="text-right date_11px">                                        
                                 </span><%--<asp:Label ID="lblBoardNickName" runat="server" CssClass=""></asp:Label><asp:Label ID="lblUserId" runat="server"></asp:Label>--%>
@@ -108,7 +108,7 @@
                 </table>
             </div>
             <div class="h3"></div>
-            <div class="" id="board_Content">
+            <div id="board_Content">
                 <textarea id="txaBoardContent" aria-label="editor" style="height:600px;"></textarea>
             </div>
         </div>

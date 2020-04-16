@@ -133,10 +133,6 @@ function editorSetting(elemID) {
                     }
                 }
             }
-        ],
-        stylesheets: [
-            "/Content/bootstrap.css",
-            "/Content/Detail-site.css"
         ]
     });
 }
