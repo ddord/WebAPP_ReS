@@ -40,6 +40,15 @@ namespace WebApplication1.Page_Basic {
         protected global::System.Web.UI.WebControls.Repeater RepeaterMainBoardList;
         
         /// <summary>
+        /// lnkPagePre control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkPagePre;
+        
+        /// <summary>
         /// rptPager control.
         /// </summary>
         /// <remarks>
@@ -47,5 +56,14 @@ namespace WebApplication1.Page_Basic {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater rptPager;
+        
+        /// <summary>
+        /// lnkPageAfter control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkPageAfter;
     }
 }

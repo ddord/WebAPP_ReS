@@ -66,9 +66,11 @@ namespace WebApplication1.Page_Basic
                     RepeaterMainBoardList.DataSource = idr;
                     RepeaterMainBoardList.DataBind();
                     idr.Close();
-                    sqlCon.Close();
                     int recordCount = Convert.ToInt32(sqlCom.Parameters["@recordCount"].Value);
                     this.PopulatePager(recordCount, pageIndex, pageSize);
+                    if (pageIndex == 1)
+                        lnkPagePre.Visible = false;
+                    
                 }
             }
         }

@@ -19,25 +19,15 @@ namespace WebApplication1.Page_Basic
         {
             if (!IsPostBack)
             {
-                /*
+                
                 DataTable dt = boardRead(Session["category"].ToString().Trim(), Session["boardNo"].ToString().Trim());
                 dataRow = dt.Rows[0];
-
-                lblBoardTilte.Text = dataRow["mainBoardTitle"].ToString();
-                lblBoardDate.Text = String.Format("{0:yyyy.MM.dd. hh:mm}", dataRow["writeDate"]);
-                lblBoardNickName.Text = dataRow["id_Name"].ToString();
-                lblUserId.Text = "(" + String.Format("{0}****", dataRow["userID"].ToString().Substring(0, 3)) + ")";
-                string dsd = dataRow["mainBoardContent"].ToString();
-                string www = dsd.Replace("\r\n", "<br />");
-                //lblBoardContent.Text = www;
-
-                //test date
                 
                 if (Request.IsAuthenticated && (dataRow["userID"].ToString() == Session["userID"].ToString()))
                 {
                     btnBoardModify.Visible = true;
                     btnBoardDelete.Visible = true;
-                }*/
+                }
             }
         }
 

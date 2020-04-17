@@ -39,7 +39,6 @@
                         $('#lblBoardDate').text(list[0].writeDate.split('T')[0]);
                         $('#lblBoardNickName').text(list[0].id_Name);
                         $('#lblUserId').text("(" + list[0].userID.substring(0, 3) + "****)");
-                        //editor.value("<strong>foo</strong><em>bar</em>");
                         editor.value(list[0].mainBoardContent);
                     }
                     else {
@@ -75,7 +74,7 @@
                             <tr style="vertical-align:top;">
                                 <td class="">
                                     <span id="lblBoardTitle" class ="Title_14px b">                                        
-                                    </span><%-- <asp:Label ID="lblBoardTilte" runat="server" CssClass="Title_14px b"></asp:Label>--%>
+                                    </span>
                                 </td>
                             </tr>
                         </tbody>
@@ -87,7 +86,7 @@
                             <tr style="vertical-align:top;">
                                 <td class="">
                                     <span id="lblBoardDate" class ="text-right date_11px">                                        
-                                    </span><%--<asp:Label ID="lblBoardDate" runat="server" CssClass="text-right date_11px"></asp:Label>--%>
+                                    </span>
                                 </td>
                             </tr>
                         </tbody>
@@ -102,7 +101,7 @@
                                 <span id="lblBoardNickName" class ="text-right date_11px">                                        
                                 </span>
                                 <span id="lblUserId" class ="text-right date_11px">                                        
-                                </span><%--<asp:Label ID="lblBoardNickName" runat="server" CssClass=""></asp:Label><asp:Label ID="lblUserId" runat="server"></asp:Label>--%>
+                                </span>
                             </td>
                         </tr>
                     </tbody>
