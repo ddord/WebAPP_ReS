@@ -15,24 +15,6 @@ var currentService = '';
 var memberFile = [];
 var lastFile = [];
 
-$(document).ready(function () {
-    if (window.location.href.indexOf('/Announcements/') >= 0) {
-        $('.tpmenu').find('a').eq(0).addClass("current");
-    } else if (window.location.href.indexOf('/FAQ/') >= 0) {
-        $('.tpmenu').find('a').eq(1).addClass("current");
-    } else if (window.location.href.indexOf('/PopupAnnouncements/') >= 0) {
-        $('.tpmenu').find('a').eq(2).addClass("current");
-    } else if (window.location.href.indexOf('/Attachments/') >= 0) {
-        $('.tpmenu').find('a').eq(3).addClass("current");
-    } else if (window.location.href.indexOf('/AdUsers_List.aspx') >= 0) {
-        $('.tpmenu').find('a').eq(4).addClass("current");
-    } else if (window.location.href.indexOf('/AzureRegionList.aspx') >= 0) {
-        $('.tpmenu').find('a').eq(5).addClass("current");
-    } else if (window.location.href.indexOf('/GroupMappingList.aspx') >= 0) {
-        $('.tpmenu').find('a').eq(6).addClass("current");
-    }
-});
-
 // function 
 function editorSetting(elemId, isEng) {
     $("#" + elemId).kendoEditor({

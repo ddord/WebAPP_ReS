@@ -14,10 +14,9 @@
     </asp:PlaceHolder>
 
     <link rel="stylesheet" href="../Content/kendo.default.min.css" />
-    <link rel="stylesheet" href="../Content/rbs_liststyle.css" />
 
-    <%-- <script src="../Scripts/jquery-3.3.1.min.js"></script>--%>
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+     <script src="../Scripts/jquery-3.3.1.min.js"></script>
+    <%--<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>--%>
     <script src="../Scripts/innerSetting.js"></script>        
     <script src="../Scripts/kendo.all.min.js"></script>
 
