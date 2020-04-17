@@ -13,16 +13,16 @@ using System.Web.UI.WebControls;
 
 namespace WebApplication1.Page_Basic
 {
-
-
     public partial class MainBoard : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
-        {            
+        {
             if (!IsPostBack)
             {
-                BindRepeator(1, int.Parse(ddlListCount.SelectedItem.ToString()));
-
+                int currentSartPageCounting = 1;
+                ViewState["currentPageList"] = currentSartPageCounting;
+                
+                BindRepeator(Convert.ToInt32(ViewState["currentPageList"]), int.Parse(ddlListCount.SelectedItem.ToString()));                
                 if (Request.IsAuthenticated)
                 {
                     btnBoardWrite.Visible = true;
@@ -67,10 +67,7 @@ namespace WebApplication1.Page_Basic
                     RepeaterMainBoardList.DataBind();
                     idr.Close();
                     int recordCount = Convert.ToInt32(sqlCom.Parameters["@recordCount"].Value);
-                    this.PopulatePager(recordCount, pageIndex, pageSize);
-                    if (pageIndex == 1)
-                        lnkPagePre.Visible = false;
-                    
+                    this.PopulatePager(recordCount, pageIndex, pageSize);                  
                 }
             }
         }
@@ -79,10 +76,14 @@ namespace WebApplication1.Page_Basic
         {
             double dblPageCount = (double)((decimal)recordCount / Convert.ToDecimal(pageSize));
             int pageCount = (int)Math.Ceiling(dblPageCount);
+
+            if (pageCount > 10 && (pageCount % 10) > 1)
+                pageCount = Convert.ToInt32(ViewState["currentPageList"]) + 9;
+
             List<ListItem> pages = new List<ListItem>();
             if (pageCount > 0)
             {
-                for (int i = 1; i <= pageCount; i++)
+                for (int i = Convert.ToInt32(ViewState["currentPageList"]); i <= pageCount; i++)
                 {
                     pages.Add(new ListItem(i.ToString(), i.ToString(), i != currentPage));
                 }
@@ -127,7 +128,21 @@ namespace WebApplication1.Page_Basic
 
         protected void ddlListCount_SelectedIndexChanged(object sender, EventArgs e)
         {
-            BindRepeator(1, int.Parse(ddlListCount.SelectedItem.ToString()));
+            BindRepeator(Convert.ToInt32(ViewState["currentPageList"]), int.Parse(ddlListCount.SelectedItem.ToString()));
+        }
+
+        protected void lnkPagePre_Click(object sender, EventArgs e)
+        {
+            int pageIndexMinusTen = int.Parse((sender as LinkButton).CommandArgument);
+            ViewState["currentPageList"] = Convert.ToInt32(ViewState["currentPageList"]) + pageIndexMinusTen;
+            BindRepeator(Convert.ToInt32(ViewState["currentPageList"]), int.Parse(ddlListCount.SelectedItem.ToString()));
+        }
+
+        protected void lnkPageAfter_Click(object sender, EventArgs e)
+        {
+            int pageIndexPlusTen = int.Parse((sender as LinkButton).CommandArgument);
+            ViewState["currentPageList"] = Convert.ToInt32(ViewState["currentPageList"]) + pageIndexPlusTen;
+            BindRepeator(Convert.ToInt32(ViewState["currentPageList"]), int.Parse(ddlListCount.SelectedItem.ToString()));
         }
     }
 }

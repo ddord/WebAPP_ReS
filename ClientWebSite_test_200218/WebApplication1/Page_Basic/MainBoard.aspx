@@ -1,8 +1,6 @@
 ﻿<%@ Page Title="메인 게시판" Language="C#" MasterPageFile="~/MasterPage/NestedLeftSide.master" AutoEventWireup="true" CodeBehind="MainBoard.aspx.cs" Inherits="WebApplication1.Page_Basic.MainBoard" %>
 
-<asp:Content ID="Content2" ContentPlaceHolderID="MainContentSub" runat="server">
-    <%-- <script src="/Scripts/jquery-3.3.1.min.js"></script> --%>
-    
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContentSub" runat="server">   
     <div class="panel-body">
         <div class="h6">
             <div style="float:left;">
@@ -49,9 +47,9 @@
             </FooterTemplate>
         </asp:Repeater>
         <div id="pagingDiv">
-            <asp:LinkButton ID="lnkPagePre" runat="server" Text="< 이전" CommandArgument='<%# Eval("Value") %>'
+            <asp:LinkButton ID="lnkPagePre" runat="server" Text="< 이전" CommandArgument= -10
                         CssClass='<%# Convert.ToBoolean(Eval("Enabled")) ? "page_enabled" : "page_disabled" %>'
-                        OnClick="Page_Changed" OnClientClick='<%# !Convert.ToBoolean(Eval("Enabled")) ? "return false;" : "" %>'></asp:LinkButton>
+                        OnClick="lnkPagePre_Click" Visible="false"></asp:LinkButton>
             <asp:Repeater ID="rptPager" runat="server">
                 <ItemTemplate>
                     <asp:LinkButton ID="lnkPage" runat="server" Text='<%#Eval("Text") %>' CommandArgument='<%# Eval("Value") %>'
@@ -59,9 +57,9 @@
                         OnClick="Page_Changed" OnClientClick='<%# !Convert.ToBoolean(Eval("Enabled")) ? "return false;" : "" %>'></asp:LinkButton>
                </ItemTemplate>
             </asp:Repeater>
-            <asp:LinkButton ID="lnkPageAfter" runat="server" Text="다음 >" CommandArgument='<%# Eval("Value") %>'
+            <asp:LinkButton ID="lnkPageAfter" runat="server" Text="다음 >" CommandArgument= 10
                         CssClass='<%# Convert.ToBoolean(Eval("Enabled")) ? "page_enabled" : "page_disabled" %>'
-                        OnClick="Page_Changed" OnClientClick='<%# !Convert.ToBoolean(Eval("Enabled")) ? "return false;" : "" %>'></asp:LinkButton>
+                        OnClick="lnkPageAfter_Click" Visible="false"></asp:LinkButton>
         </div>       
     </div>
 </asp:Content>
