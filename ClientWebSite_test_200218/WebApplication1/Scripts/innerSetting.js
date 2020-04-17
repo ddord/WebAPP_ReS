@@ -34,8 +34,9 @@ $(document).ready(function () {
 });
 
 // function 
-function fnSetEditor(elemId, isEng) {
+function editorSetting(elemId, isEng) {
     $("#" + elemId).kendoEditor({
+        encoded: false,
         tools: [
             {
                 name: "bold",

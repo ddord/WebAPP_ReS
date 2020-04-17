@@ -6,16 +6,16 @@
             category = '<%=Session["category"]%>';
             boardNo = '<%=Session["boardNo"]%>';
 
-            BoardViewSetting();
-            getBoardViewValue();
+            BoardViewSetting(); 
+            getBoardViewValue();           
         });
        
         function BoardViewSetting() {
             editorSetting("txaBoardContent", "");
 
             editor = $("#txaBoardContent").data("kendoEditor");
-            //$(editor.body).attr('contenteditable', false);
-            //$('.k-editor-toolbar').hide();
+            $(editor.body).attr('contenteditable', false);
+            $('.k-editor-toolbar').hide();
         }
        
         function getBoardViewValue() {
@@ -39,6 +39,7 @@
                         $('#lblBoardDate').text(list[0].writeDate.split('T')[0]);
                         $('#lblBoardNickName').text(list[0].id_Name);
                         $('#lblUserId').text("(" + list[0].userID.substring(0, 3) + "****)");
+                        //editor.value("<strong>foo</strong><em>bar</em>");
                         editor.value(list[0].mainBoardContent);
                     }
                     else {
@@ -109,7 +110,7 @@
             </div>
             <div class="h3"></div>
             <div id="board_Content">
-                <textarea id="txaBoardContent" aria-label="editor" style="height:600px;"></textarea>
+                <textarea id="txaBoardContent" rows="10" cols="30" aria-label="editor" style="height:600px"></textarea>
             </div>
         </div>
     </div>

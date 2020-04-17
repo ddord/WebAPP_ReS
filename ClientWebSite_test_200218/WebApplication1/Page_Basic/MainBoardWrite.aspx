@@ -6,7 +6,7 @@
             userName = '<%= UserName %>';
 
             editorSetting("editor");
-            
+            editor = $("#editor").data("kendoEditor");
         });
         
         function boardWrite() {
@@ -14,7 +14,7 @@
             var fieldValidCount = 0;
 
             titleValue = $("input[id$='txbBoardTitle']").val().trim();
-            contentValue = $("#editor").val().trim();
+            contentValue = $("#editor").val();
             titleRule = /^[\w가-힣ㄱ-ㅎㅏ-ㅣ\s~!@#$%^&*()\-_=+\\\|\[\]{};:\'",.<>\/?]{1,50}$/;
             contentRule = /^[\w가-힣ㄱ-ㅎㅏ-ㅣ\s~!@#$%^&*()\-_=+\\\|\[\]{};:\'",.<>\/?]{1,300}$/;
 
