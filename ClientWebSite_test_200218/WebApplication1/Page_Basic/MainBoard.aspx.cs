@@ -74,19 +74,57 @@ namespace WebApplication1.Page_Basic
 
         private void PopulatePager(int recordCount, int currentPage, int pageSize)
         {
-            double dblPageCount = (double)((decimal)recordCount / Convert.ToDecimal(pageSize));
-            int pageCount = (int)Math.Ceiling(dblPageCount);
+            double ddlPageCount = (double)((decimal)recordCount / Convert.ToDecimal(pageSize));
+            int pageCount = (int)Math.Ceiling(ddlPageCount);
 
-            if (pageCount > 10 && (pageCount % 10) > 1)
-                pageCount = Convert.ToInt32(ViewState["currentPageList"]) + 9;
+            if (currentPage < 1)
+                currentPage = 1;
+            else if (currentPage > pageCount)
+                currentPage = pageCount;
+
+            int startPage, endPage;
+            if (totalPages <= maxPages)
+            {
+                // total pages less than max so show all pages
+                startPage = 1;
+                endPage = totalPages;
+            }
+            else
+            {
+                // total pages more than max so calculate start and end pages
+                var maxPagesBeforeCurrentPage = (int)Math.Floor((decimal)maxPages / (decimal)2);
+                var maxPagesAfterCurrentPage = (int)Math.Ceiling((decimal)maxPages / (decimal)2) - 1;
+                if (currentPage <= maxPagesBeforeCurrentPage)
+                {
+                    // current page near the start
+                    startPage = 1;
+                    endPage = maxPages;
+                }
+                else if (currentPage + maxPagesAfterCurrentPage >= totalPages)
+                {
+                    // current page near the end
+                    startPage = totalPages - maxPages + 1;
+                    endPage = totalPages;
+                }
+                else
+                {
+                    // current page somewhere in the middle
+                    startPage = currentPage - maxPagesBeforeCurrentPage;
+                    endPage = currentPage + maxPagesAfterCurrentPage;
+                }
+            }
 
             List<ListItem> pages = new List<ListItem>();
             if (pageCount > 0)
             {
-                for (int i = Convert.ToInt32(ViewState["currentPageList"]); i <= pageCount; i++)
+                pages.Add(new ListItem(" << ", "1", currentPage > 1));
+                pages.Add(new ListItem(" < ", "1", currentPage > 1));
+                for (int i = currentPage; i <= pageCount; i++)
                 {
                     pages.Add(new ListItem(i.ToString(), i.ToString(), i != currentPage));
                 }
+                pages.Add(new ListItem(" > ", pageCount.ToString(), currentPage < pageCount));
+                pages.Add(new ListItem(" >> ", pageCount.ToString(), currentPage < pageCount));
             }
             rptPager.DataSource = pages;
             rptPager.DataBind();
@@ -94,6 +132,8 @@ namespace WebApplication1.Page_Basic
 
         protected void Page_Changed(object sender, EventArgs e)
         {
+            LinkButton linkBtn = sender as LinkButton;
+            linkBtn.Attributes.Add("class", "lnkBtnSelect");
             int pageIndex = int.Parse((sender as LinkButton).CommandArgument);
             this.BindRepeator(pageIndex, int.Parse(ddlListCount.SelectedItem.ToString()));
         }

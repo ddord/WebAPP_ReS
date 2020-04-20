@@ -47,9 +47,6 @@
             </FooterTemplate>
         </asp:Repeater>
         <div id="pagingDiv">
-            <asp:LinkButton ID="lnkPagePre" runat="server" Text="< 이전" CommandArgument= -10
-                        CssClass='<%# Convert.ToBoolean(Eval("Enabled")) ? "page_enabled" : "page_disabled" %>'
-                        OnClick="lnkPagePre_Click" Visible="false"></asp:LinkButton>
             <asp:Repeater ID="rptPager" runat="server">
                 <ItemTemplate>
                     <asp:LinkButton ID="lnkPage" runat="server" Text='<%#Eval("Text") %>' CommandArgument='<%# Eval("Value") %>'
@@ -57,9 +54,6 @@
                         OnClick="Page_Changed" OnClientClick='<%# !Convert.ToBoolean(Eval("Enabled")) ? "return false;" : "" %>'></asp:LinkButton>
                </ItemTemplate>
             </asp:Repeater>
-            <asp:LinkButton ID="lnkPageAfter" runat="server" Text="다음 >" CommandArgument= 10
-                        CssClass='<%# Convert.ToBoolean(Eval("Enabled")) ? "page_enabled" : "page_disabled" %>'
-                        OnClick="lnkPageAfter_Click" Visible="false"></asp:LinkButton>
         </div>       
     </div>
 </asp:Content>
