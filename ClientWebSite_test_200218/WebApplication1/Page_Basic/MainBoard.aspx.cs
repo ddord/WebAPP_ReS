@@ -20,9 +20,9 @@ namespace WebApplication1.Page_Basic
             if (!IsPostBack)
             {
                 int currentSartPageCounting = 1;
-                ViewState["currentPageList"] = currentSartPageCounting;
+                ViewState["currentPageScope"] = 0;
                 
-                BindRepeator(Convert.ToInt32(ViewState["currentPageList"]), int.Parse(ddlListCount.SelectedItem.ToString()));                
+                BindRepeator(currentSartPageCounting, int.Parse(ddlListCount.SelectedItem.ToString()));                
                 if (Request.IsAuthenticated)
                 {
                     btnBoardWrite.Visible = true;
@@ -75,56 +75,65 @@ namespace WebApplication1.Page_Basic
         private void PopulatePager(int recordCount, int currentPage, int pageSize)
         {
             double ddlPageCount = (double)((decimal)recordCount / Convert.ToDecimal(pageSize));
-            int pageCount = (int)Math.Ceiling(ddlPageCount);
+            int fullPageCount = (int)Math.Ceiling(ddlPageCount);
+            bool endScope = false;
+            int startPage = 0, endPage = 0;
+            int prePage = 1, nextPage = fullPageCount;
+
+            int maxPages = 5;
 
             if (currentPage < 1)
-                currentPage = 1;
-            else if (currentPage > pageCount)
-                currentPage = pageCount;
+                currentPage = 1;              
+            else if (currentPage > fullPageCount)
+                currentPage = fullPageCount;
 
-            int startPage, endPage;
-            if (totalPages <= maxPages)
-            {
-                // total pages less than max so show all pages
+            if (fullPageCount <= maxPages)
+            { 
                 startPage = 1;
-                endPage = totalPages;
+                endPage = fullPageCount;
             }
             else
             {
-                // total pages more than max so calculate start and end pages
-                var maxPagesBeforeCurrentPage = (int)Math.Floor((decimal)maxPages / (decimal)2);
-                var maxPagesAfterCurrentPage = (int)Math.Ceiling((decimal)maxPages / (decimal)2) - 1;
-                if (currentPage <= maxPagesBeforeCurrentPage)
+
+
+                if ((currentPage >= maxPages) && ((currentPage % maxPages) == 0))
                 {
-                    // current page near the start
-                    startPage = 1;
-                    endPage = maxPages;
-                }
-                else if (currentPage + maxPagesAfterCurrentPage >= totalPages)
-                {
-                    // current page near the end
-                    startPage = totalPages - maxPages + 1;
-                    endPage = totalPages;
+                    startPage = ((currentPage / maxPages) * maxPages) - 4;
+                    endPage = startPage + 4;
                 }
                 else
                 {
-                    // current page somewhere in the middle
-                    startPage = currentPage - maxPagesBeforeCurrentPage;
-                    endPage = currentPage + maxPagesAfterCurrentPage;
+                    startPage = ((currentPage / maxPages) * maxPages) + 1;
+                    endPage = startPage + 4;
+                }
+
+                prePage = startPage - 1;                
+                nextPage = endPage + 1;
+
+                if ((fullPageCount / maxPages) == (currentPage / maxPages) &&  (fullPageCount < endPage))
+                { 
+                    endPage = fullPageCount;
+                    endScope = true;
                 }
             }
-
+            
             List<ListItem> pages = new List<ListItem>();
-            if (pageCount > 0)
+            if (fullPageCount > 0)
             {
-                pages.Add(new ListItem(" << ", "1", currentPage > 1));
-                pages.Add(new ListItem(" < ", "1", currentPage > 1));
-                for (int i = currentPage; i <= pageCount; i++)
+                if (currentPage > maxPages)
+                {
+                    pages.Add(new ListItem(" << ", "1", currentPage > 1));
+                    pages.Add(new ListItem(" < ", prePage.ToString(), currentPage > 1));
+                }
+                for (int i = startPage; i <= endPage; i++)
                 {
                     pages.Add(new ListItem(i.ToString(), i.ToString(), i != currentPage));
                 }
-                pages.Add(new ListItem(" > ", pageCount.ToString(), currentPage < pageCount));
-                pages.Add(new ListItem(" >> ", pageCount.ToString(), currentPage < pageCount));
+                if (!endScope)
+                {
+                    pages.Add(new ListItem(" > ", nextPage.ToString(), currentPage < fullPageCount));
+                    pages.Add(new ListItem(" >> ", fullPageCount.ToString(), currentPage < fullPageCount));
+                }
             }
             rptPager.DataSource = pages;
             rptPager.DataBind();
