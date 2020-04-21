@@ -24,7 +24,6 @@
                                 <asp:TextBox runat="server" ID="txbPassword" TextMode="Password" CssClass="form-control" Text="" />
                                 <p class="err_txt" ID="login-error-message">
                                     <asp:Label ID="lbl_error" runat="server" Text="" Visible="false"></asp:Label></p>
-                                <%--<asp:RequiredFieldValidator runat="server" CssClass="text-danger" ErrorMessage="error" />--%>
                             </div>
                         </div>
                         <div style="margin-bottom: 10px" class="form-group">
