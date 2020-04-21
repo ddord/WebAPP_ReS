@@ -94,8 +94,6 @@ namespace WebApplication1.Page_Basic
             }
             else
             {
-
-
                 if ((currentPage >= maxPages) && ((currentPage % maxPages) == 0))
                 {
                     startPage = ((currentPage / maxPages) * maxPages) - 4;
@@ -177,23 +175,7 @@ namespace WebApplication1.Page_Basic
 
         protected void ddlListCount_SelectedIndexChanged(object sender, EventArgs e)
         {
-            BindRepeator(Convert.ToInt32(ViewState["currentPageList"]), int.Parse(ddlListCount.SelectedItem.ToString()));
-        }
-
-        protected void lnkPagePre_Click(object sender, EventArgs e)
-        {
-
-            int ds = 0;
-            int pageIndexMinusTen = int.Parse((sender as LinkButton).CommandArgument);
-            ViewState["currentPageList"] = Convert.ToInt32(ViewState["currentPageList"]) + pageIndexMinusTen;
-            BindRepeator(Convert.ToInt32(ViewState["currentPageList"]), int.Parse(ddlListCount.SelectedItem.ToString()));
-        }
-
-        protected void lnkPageAfter_Click(object sender, EventArgs e)
-        {
-            int pageIndexPlusTen = int.Parse((sender as LinkButton).CommandArgument);
-            ViewState["currentPageList"] = Convert.ToInt32(ViewState["currentPageList"]) + pageIndexPlusTen;
-            BindRepeator(Convert.ToInt32(ViewState["currentPageList"]), int.Parse(ddlListCount.SelectedItem.ToString()));
+            BindRepeator(1, int.Parse(ddlListCount.SelectedItem.ToString()));
         }
     }
 }

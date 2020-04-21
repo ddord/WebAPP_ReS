@@ -39,7 +39,6 @@
                     <td class="col-md-1">                    
                         <%# DateTime.Now.ToString("yyyy.MM.dd.") == String.Format("{0:yyyy.MM.dd.}", Eval("writeDate")) ? String.Format("{0:HH:mm}", Eval("writeDate")) : String.Format("{0:yyyy.MM.dd.}", Eval("writeDate")) %>
                     </td>
-                        <%--<td class="col-md-2"><%#Eval("writeDate")%></td>--%>
                 </tr>
             </ItemTemplate>
             <FooterTemplate>
