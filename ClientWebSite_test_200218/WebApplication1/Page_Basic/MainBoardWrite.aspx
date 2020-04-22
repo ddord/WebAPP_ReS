@@ -90,8 +90,7 @@
                     <asp:Label ID="lblBoardWrite3" runat="server" Text="내용" CssClass="width-8 label_title"></asp:Label>
                 </div>
                 <div class="col-xs-11"> 
-                    <textarea id="editor" style="width:740px;height:500px" aria-label="editor"></textarea>
-                    <%-- <asp:TextBox ID="txbBoardContent" runat="server" Width="740px" Height="500px" TextMode="MultiLine"></asp:TextBox> --%>
+                    <textarea id="editor" style="width:740px;height:500px" aria-label="editor"></textarea>                    
                 </div>
                 
             </li>
