@@ -98,14 +98,14 @@
 
         #pagingDiv a:hover {
             cursor: pointer;
-            background: #fefefe;
+            background: #0094ff;
             background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FEFEFE), to(#f0f0f0));
             background: -moz-linear-gradient(0% 0% 270deg,#FEFEFE, #f0f0f0);
         }
 
         #pagingDiv a.active {
             border: none;
-            background: #616161;
+            background: rgba(0,0,0, .5);
             box-shadow: inset 0px 0px 8px rgba(0,0,0, .5), 0px 1px 0px rgba(255,255,255, .8);
             color: #f0f0f0;
             text-shadow: 0px 0px 3px rgba(0,0,0, .5);
