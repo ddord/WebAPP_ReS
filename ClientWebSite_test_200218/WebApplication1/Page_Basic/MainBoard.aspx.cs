@@ -63,11 +63,21 @@ namespace WebApplication1.Page_Basic
                     sqlCom.Parameters["@recordCount"].Direction = ParameterDirection.Output;
                     sqlCon.Open();
                     IDataReader idr = sqlCom.ExecuteReader();
-                    RepeaterMainBoardList.DataSource = idr;
-                    RepeaterMainBoardList.DataBind();
-                    idr.Close();
-                    int recordCount = Convert.ToInt32(sqlCom.Parameters["@recordCount"].Value);
-                    this.PopulatePager(recordCount, pageIndex, pageSize);                  
+                    try
+                    {
+                        RepeaterMainBoardList.DataSource = idr;
+                        RepeaterMainBoardList.DataBind();
+                        idr.Close();
+                        int recordCount = Convert.ToInt32(sqlCom.Parameters["@recordCount"].Value);
+                        this.PopulatePager(recordCount, pageIndex, pageSize);
+                    }
+                    catch (Exception ex)
+                    {
+                        Response.Write(ex.Message);
+                    }
+                    finally
+                    {
+                    }
                 }
             }
         }
@@ -140,7 +150,8 @@ namespace WebApplication1.Page_Basic
         protected void Page_Changed(object sender, EventArgs e)
         {
             LinkButton linkBtn = sender as LinkButton;
-            linkBtn.Attributes.Add("class", "lnkBtnSelect");
+            //linkBtn.Attributes.Add("class", "lnkBtnSelect");
+            linkBtn.Enabled = true;
             int pageIndex = int.Parse((sender as LinkButton).CommandArgument);
             this.BindRepeator(pageIndex, int.Parse(ddlListCount.SelectedItem.ToString()));
         }
