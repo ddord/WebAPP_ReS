@@ -5,7 +5,7 @@
         var title = $(document).find("title").text().trim();
         $(document).ready(function () {
             if (title.includes("메인 게시판")) {
-                $("#sideMenuTitle").append("<a>메인 게시판</a>");
+                $("#sideMenuTitle").append("<a>-메인 게시판</a>");
                 $("#sideMenuTitle").append("<a href=\"/Page_Basic/MainBoard.aspx\">게시판</a>");
                 //$("#sideMenuTitle").append("<a href=\"#\">Services</a>");
                 //$("#sideMenuTitle").append("<a href=\"#\">Clients</a>");

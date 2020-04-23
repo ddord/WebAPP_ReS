@@ -84,8 +84,8 @@ namespace WebApplication1.Page_Basic
 
         private void PopulatePager(int recordCount, int currentPage, int pageSize)
         {
-            double ddlPageCount = (double)((decimal)recordCount / Convert.ToDecimal(pageSize));
-            int fullPageCount = (int)Math.Ceiling(ddlPageCount);
+            double PageCount = (double)((decimal)recordCount / Convert.ToDecimal(pageSize));
+            int fullPageCount = (int)Math.Ceiling(PageCount);
             bool endScope = false;
             int startPage = 0, endPage = 0;
             int prePage = 1, nextPage = fullPageCount;
@@ -101,6 +101,7 @@ namespace WebApplication1.Page_Basic
             { 
                 startPage = 1;
                 endPage = fullPageCount;
+                endScope = true;
             }
             else
             {
@@ -118,7 +119,7 @@ namespace WebApplication1.Page_Basic
                 prePage = startPage - 1;                
                 nextPage = endPage + 1;
 
-                if ((fullPageCount / maxPages) == (currentPage / maxPages) &&  (fullPageCount < endPage))
+                if ((fullPageCount / maxPages) == (currentPage / maxPages) && (fullPageCount < endPage))
                 { 
                     endPage = fullPageCount;
                     endScope = true;
